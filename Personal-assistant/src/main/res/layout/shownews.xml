@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="#1e8ae8"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/shownews_close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/chevrondoubleleft"/>
+
+    </LinearLayout>
+
+    <WebView
+        android:layout_weight="8"
+        android:padding="5dp"
+        android:id="@+id/shownews"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </WebView>
+
+    <LinearLayout
+        android:background="#1e8ae8"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你的观点:"/>
+     </LinearLayout>
+
+    <RelativeLayout
+        android:background="#1e8ae8"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/textview_border"
+            android:drawableLeft="@mipmap/emoticonhappy"
+            android:id="@+id/shownews_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60% 赞成"/>
+        <TextView
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#FF9800"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VS"/>
+        <TextView
+            android:padding="5dp"
+            android:background="@drawable/textview_border"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@mipmap/emoticonsad"
+            android:id="@+id/shownews_unlike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40% 不赞成"/>
+    </RelativeLayout>
+</LinearLayout>
