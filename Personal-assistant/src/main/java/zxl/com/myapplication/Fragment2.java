@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,33 +14,38 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.ShowListActivity;
 import adapter.MyRecycleViewAdapter;
 import model.ChengYu_m;
 import mysqlite.ChengYuDB;
-import search.SearchChengYu;
-import showchengyu.ShowChengYu;
+import activity.SearchChengYuActivity;
+import activity.ShowChengYuActivity;
 import util.DividerLinearItemDecoration;
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/8/11.
+ * 成语功能主界面
  */
 public class Fragment2 extends Fragment implements View.OnClickListener {
 
+    //搜索框
     private EditText search;
-    private TextView yixueguo;
-    private TextView yishoucang;
+    //足迹
+    private TextView zuji;
+    //收藏夹
+    private TextView shoucangjia;
+    //每日推荐列表
     private RecyclerView recyclerView;
+    //成语列表数据列表
     private List<ChengYu_m> list=new ArrayList<>();
+    //成语列表的Adapter
     private MyRecycleViewAdapter adapter;
+    //数据库实例
     private ChengYuDB mChengYuDB;
+    //数据库数据返回结果游标
     private Cursor mCursor;
     @Nullable
     @Override
@@ -55,15 +57,16 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
         mCursor=mChengYuDB.select1();
 
         search= (EditText) view.findViewById(R.id.fragment2_magnify);
-        yixueguo= (TextView) view.findViewById(R.id.fragment2_yixueguo);
-        yishoucang= (TextView) view.findViewById(R.id.fragment2_yishoucang);
+        zuji= (TextView) view.findViewById(R.id.fragment2_yixueguo);
+        shoucangjia= (TextView) view.findViewById(R.id.fragment2_yishoucang);
+        zuji.setOnClickListener(this);
+        shoucangjia.setOnClickListener(this);
+
+
         recyclerView= (RecyclerView) view.findViewById(R.id.fragment2_recyclerview);
         for(int i=0;i<mCursor.getCount();i++){
             mCursor.moveToPosition(i);
             list.add(new ChengYu_m(mCursor.getString(1).toString(),mCursor.getString(2).toString()));
-            Log.d("mCursor0",mCursor.getString(0).toString());
-            Log.d("mCursor1",mCursor.getString(1).toString());
-            Log.d("mCursor2",mCursor.getString(2).toString());
         }
 
         adapter=new MyRecycleViewAdapter(getActivity(),list);
@@ -81,7 +84,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
             {
                 Toast.makeText(getActivity(), position + " click",
                         Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(getActivity(), ShowChengYu.class);
+                Intent intent=new Intent(getActivity(), ShowChengYuActivity.class);
                 intent.putExtra("name",list.get(position).getName());
                 startActivity(intent);
 
@@ -96,7 +99,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
             }
         });
 
-
         search.setOnClickListener(this);
         return view;
     }
@@ -104,9 +106,19 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.fragment2_magnify:
-                Intent intent=new Intent(getActivity(), SearchChengYu.class);
+            case R.id.fragment2_magnify://搜索按钮
+                Intent intent=new Intent(getActivity(), SearchChengYuActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.fragment2_yishoucang://收藏夹按钮
+                Intent intent1=new Intent(getActivity(), ShowListActivity.class);
+                intent1.putExtra("type","收藏夹");
+                startActivity(intent1);
+                break;
+            case  R.id.fragment2_yixueguo://学习足迹按钮
+                Intent intent2=new Intent(getActivity(), ShowListActivity.class);
+                intent2.putExtra("type","足迹");
+                startActivity(intent2);
                 break;
         }
     }

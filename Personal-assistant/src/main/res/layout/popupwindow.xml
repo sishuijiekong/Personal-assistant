@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#66ffffff"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:padding="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/edittext_border"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:padding="5dp"
+            android:paddingRight="20dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/popupwindow_xiangqing"
+            android:text="查看详情"/>
+        <View
+            android:background="#1e8ae8"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+        <TextView
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/popupwindow_delete"
+            android:text="删除该记录"/>
+    </LinearLayout>
+</LinearLayout>

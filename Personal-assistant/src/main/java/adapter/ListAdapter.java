@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
-import java.util.Map;
 
 import model.Joke;
 import zxl.com.myapplication.R;
@@ -40,7 +38,7 @@ public class ListAdapter extends BaseListAdapter<Joke> implements View.OnClickLi
                 holder.noDataRootLayout = (LinearLayout) convertView.findViewById(R.id.root_layout);
                 holder.noDataRootLayout.setOnClickListener(this);
             } else {
-                convertView = ((Activity) (mContext)).getLayoutInflater().inflate(R.layout.item_list_view, parent, false);
+                convertView = ((Activity) (mContext)).getLayoutInflater().inflate(R.layout.item_jokelist_view, parent, false);
                 holder.textView1 = (TextView) convertView.findViewById(R.id.item_list_view_text);
                 holder.textView2 = (TextView) convertView.findViewById(R.id.item_list_view_time);
             }

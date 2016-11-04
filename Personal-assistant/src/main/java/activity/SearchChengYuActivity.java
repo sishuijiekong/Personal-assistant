@@ -1,4 +1,4 @@
-package search;
+package activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import showchengyu.ShowChengYu;
 import zxl.com.myapplication.R;
 
 /**
  * Created by Administrator on 2016/11/4.
  */
-public class SearchChengYu extends AppCompatActivity implements View.OnClickListener{
+public class SearchChengYuActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView back;
     private EditText name;
@@ -44,7 +43,7 @@ public class SearchChengYu extends AppCompatActivity implements View.OnClickList
                 if(name.getText().toString()==null||name.getText().toString().length()==0){
                     Toast.makeText(this,"请输入搜索内容！",Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent intent=new Intent(SearchChengYu.this, ShowChengYu.class);
+                    Intent intent=new Intent(SearchChengYuActivity.this, ShowChengYuActivity.class);
                     intent.putExtra("name",name.getText().toString());
                     startActivity(intent);
                     finish();

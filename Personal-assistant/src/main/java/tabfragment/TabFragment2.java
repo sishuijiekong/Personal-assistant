@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
@@ -28,13 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import adapter.ListAdapter;
 import adapter.ListAdapter2;
-import model.Joke;
 import model.New;
 import pulltorefresh.PullListView;
 import pulltorefresh.PullToRefreshLayout;
-import shownews.ShowNewsActivity;
+import activity.ShowNewsActivity;
 import zxl.com.myapplication.R;
 
 /**

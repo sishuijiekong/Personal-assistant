@@ -1,5 +1,7 @@
 package zxl.com.myapplication;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,11 +12,16 @@ import android.widget.RadioGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.GuideActivity;
 import adapter.MyFragmentPagerAdapter;
 import model.ChengYu_m;
 import model.Joke;
 import mysqlite.ChengYuDB;
 
+/**
+ *  by 张显林
+ *  程序主页面
+ */
 public class MainActivity extends AppCompatActivity {
     private MyFragmentPagerAdapter myFragmentPagerAdapter;
     private RadioGroup rgGroup;
@@ -22,26 +29,31 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private ChengYuDB mChengYuDB;
     private Cursor mCursor;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏掉系统原先的导航栏
         setContentView(R.layout.activity_main);
+
+        // 读取 SharedPreferences
+        preferences = getSharedPreferences("MYAPP_LOG", MODE_PRIVATE);
+        //判断是不是首次运行，
+        if(preferences.getBoolean("isfirstrun", true)){
+
+            editor = preferences.edit();
+            //将首次运行标志位设置为false，下次运行时不在显示引导界面
+            editor.putBoolean("isfirstrun", false);
+            editor.commit();
+
+            Intent intent=new Intent(MainActivity.this, GuideActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         mViewPager = (ViewPager) findViewById(R.id.vp_main);
-
-        mChengYuDB=new ChengYuDB(MainActivity.this);
-
-        mChengYuDB.insert1(new ChengYu_m("积少成多","JISHAOCHENGDUO"));
-        mChengYuDB.insert1(new ChengYu_m("纲举目张","GANGJUKUZHANG"));
-        mChengYuDB.insert1(new ChengYu_m("自作主张","ZIZUOZHEZHANG"));
-        mChengYuDB.insert1(new ChengYu_m("急敛暴征","JILIANBAOZHENG"));
-        mChengYuDB.insert1(new ChengYu_m("鸿骞凤立","HONGSAIFENGLI"));
-        mChengYuDB.insert1(new ChengYu_m("贼人心虚","ZIRENXINXU"));
-        mChengYuDB.insert1(new ChengYu_m("全无心肝","QUANWUXINGAN"));
-        mChengYuDB.insert1(new ChengYu_m("芙蓉出水","CHESHUIFURONG"));
-        mChengYuDB.insert1(new ChengYu_m("高耸入云","GAOSONGRUYUN"));
-        mChengYuDB.insert1(new ChengYu_m("食案方丈","SHIANFANGAN"));
         fragments=new ArrayList<Fragment>();
         fragments.add(new Fragment1());
         fragments.add(new Fragment2());

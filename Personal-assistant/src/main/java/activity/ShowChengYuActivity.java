@@ -1,4 +1,4 @@
-package showchengyu;
+package activity;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -23,40 +23,54 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.ChengYu;
 import model.ChengYu_m;
-import model.New;
 import mysqlite.ChengYuDB;
 import util.ChengYuFormate;
 import zxl.com.myapplication.R;
 
 /**
- * Created by Administrator on 2016/11/3.
+ * Created by 张显林 on 2016/11/3.
+ * 显示成语详细信息界面
  */
-public class ShowChengYu  extends AppCompatActivity implements View.OnClickListener{
+public class ShowChengYuActivity extends AppCompatActivity implements View.OnClickListener{
 
     private String name;
+    //返回按钮
     private ImageView back;
+    //收藏按钮
     private ImageView shoucang;
+    //分享按钮
     private ImageView share;
+    //成语名称
     private TextView chengyu;
+    //成语拼音
     private TextView pinyin;
+    //同义词
     private RadioGroup mRadioGroup1;
+    //反义词
     private RadioGroup mRadioGroup2;
+    //成语解释
     private TextView jieeshi;
+    //成语出处
     private TextView chuchu;
+    //成语例句
     private TextView liju;
+    //成语英文解释
     private TextView yinwen;
+    //成语引证解释
     private TextView yinzheng;
+    //成语实例
     private ChengYu chengyudata = new ChengYu();
+    //没有数据时页面的返回按钮
     private ImageView error_close;
+    //没有数据时页面的反响按钮
     private ImageView error_share;
-
+    //数据库实例
     private ChengYuDB mChengYuDB=new ChengYuDB(this);
-
+    //网络连接请求
     private static OkHttpClient client=new OkHttpClient();
 
 
@@ -72,6 +86,9 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
         initEvent();
     }
 
+    /**
+     * 控件事件监听
+     */
     private void initEvent() {
 
         back.setOnClickListener(this);
@@ -79,6 +96,9 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
         share.setOnClickListener(this);
     }
 
+    /**
+     * 实例化控件
+     */
     private void initView() {
 
         back= (ImageView) findViewById(R.id.showchengyu_back);
@@ -96,6 +116,9 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * 加载数据
+     */
     private void initData() {
 
 
@@ -139,7 +162,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ShowChengYu.this.runOnUiThread(new Runnable() {
+                ShowChengYuActivity.this.runOnUiThread(new Runnable() {
                     @TargetApi(Build.VERSION_CODES.M)
                     @Override
                     public void run() {
@@ -151,7 +174,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                         chengyu.setText(chengyudata.getName());
                             //设置同义成语 （如果数据中没有同义成语，则显示提示语句）
                             if(chengyudata.getTongyi().equals("null")){
-                                TextView textView = new TextView(ShowChengYu.this);
+                                TextView textView = new TextView(ShowChengYuActivity.this);
                                 textView.setText("没有同义成语");
                                 mRadioGroup1.addView(textView);
                             }else{
@@ -159,7 +182,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                                 final List<String> stringList;
                                 stringList= ChengYuFormate.formate1(chengyudata.getTongyi().toString());
                                 for(int i=0;i<stringList.size();i++){
-                                    textView = new TextView(ShowChengYu.this);
+                                    textView = new TextView(ShowChengYuActivity.this);
                                     textView.setText(stringList.get(i).toString());
                                     textView.setTextColor(android.graphics.Color.parseColor("#1e8ae8"));
                                     mRadioGroup1.addView(textView);
@@ -167,7 +190,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                                     textView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            Intent intent=new Intent(ShowChengYu.this,ShowChengYu.class);
+                                            Intent intent=new Intent(ShowChengYuActivity.this, ShowChengYuActivity.class);
                                             intent.putExtra("name",stringList.get(finalI).toString());
                                             startActivity(intent);
                                             finish();
@@ -179,7 +202,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                             //设置反义成语 （如果数据中没有反义成语，则显示提示语句）
                             if(chengyudata.getFanyi().equals("null")){
 
-                                TextView textView = new TextView(ShowChengYu.this);
+                                TextView textView = new TextView(ShowChengYuActivity.this);
                                 textView.setText("没有反义成语");
                                 mRadioGroup2.addView(textView);
 
@@ -188,7 +211,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                                 final List<String> stringList;
                                 stringList= ChengYuFormate.formate1(chengyudata.getFanyi().toString());
                                 for(int i=0;i<stringList.size();i++){
-                                    textView = new TextView(ShowChengYu.this);
+                                    textView = new TextView(ShowChengYuActivity.this);
                                     textView.setText(stringList.get(i).toString());
                                     textView.setTextColor(android.graphics.Color.parseColor("#1e8ae8"));
                                     mRadioGroup2.addView(textView);
@@ -196,7 +219,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                                     textView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            Intent intent=new Intent(ShowChengYu.this,ShowChengYu.class);
+                                            Intent intent=new Intent(ShowChengYuActivity.this, ShowChengYuActivity.class);
                                             intent.putExtra("name",stringList.get(finalI).toString());
                                             startActivity(intent);
                                             finish();
@@ -261,7 +284,7 @@ public class ShowChengYu  extends AppCompatActivity implements View.OnClickListe
                             error_share.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Toast.makeText(ShowChengYu.this,"分享功能暂代开发！",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ShowChengYuActivity.this,"分享功能暂代开发！",Toast.LENGTH_SHORT).show();
                                 }
                             });
 

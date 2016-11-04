@@ -32,17 +32,24 @@ import pulltorefresh.PullToRefreshLayout;
 import zxl.com.myapplication.R;
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/11/01.
+ * 最新笑话页面
  */
 public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
 
+    //笑话显示列表
     private PullToRefreshLayout mRefreshLayout;
     private PullListView mPullListView;
+    //笑话数据列表
     private List<Joke> jokeList= new ArrayList<>();
+
     private ListAdapter mAdapter;
+    //网络请求
     private static OkHttpClient client=new OkHttpClient();
+    //请求数据时的参数  数据页数
     private int page=1;
-    private long date;
+    //请求数据时的参数  时间戳
+    private String date;
 
 
     @Nullable
@@ -53,8 +60,8 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
         mPullListView = (PullListView) view.findViewById(R.id.pullListView);
         mRefreshLayout.setOnRefreshListener(this);
 
+        //初始化数据
         initData(0);
-        Log.i("size++++++++++",jokeList.size()+"");
         jokeList.add(0,new Joke());
         mAdapter = new ListAdapter(getActivity(), jokeList);
         mPullListView.setAdapter(mAdapter);
@@ -73,11 +80,13 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
         }else{
             page++;
         }
-        date=(new Date().getTime()/1000)-600;
+        date=((new Date().getTime()/100)-600)+"";
+        Log.i("kkkkkkkkk",date);
         Request request = new Request.Builder()
                 .url("http://japi.juhe.cn/joke/content/list.from?sort=desc&page="+page+"&pagesize=10&time="+date+"&key=91c0a24f2befe8e95096afe420df99a0")
                 .build();
 
+        Log.i("JOKE_URL","http://japi.juhe.cn/joke/content/list.from?sort=desc&page="+page+"&pagesize=10&time="+date+"&key=91c0a24f2befe8e95096afe420df99a0");
         client.newCall(request).enqueue(new Callback() {
 
             JSONObject jsonobject;
@@ -104,13 +113,11 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
                         JSONObject json= (JSONObject) jsonArray.get(i);
                         joke.setContent(json.getString("content"));
                         joke.setUpdatetime(json.getString("updatetime"));
+                        Log.i("joke",json.getString("updatetime"));
                         if(!jokeList.contains(joke))
                                jokeList.add(0,joke);
 
                     }
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

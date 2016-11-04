@@ -3,8 +3,6 @@ package adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +10,11 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.picasso.Picasso;
 import java.util.List;
-import model.Joke;
+
 import model.New;
 import zxl.com.myapplication.R;
 
@@ -48,7 +45,7 @@ public class ListAdapter2 extends BaseListAdapter<New> {
                 convertView = ((Activity) (mContext)).getLayoutInflater().inflate(R.layout.tab_fragment1_has_no_data, parent, false);
                 holder.noDataRootLayout = (LinearLayout) convertView.findViewById(R.id.root_layout);
             } else {
-                convertView = ((Activity) (mContext)).getLayoutInflater().inflate(R.layout.item_list_view2, parent, false);
+                convertView = ((Activity) (mContext)).getLayoutInflater().inflate(R.layout.item_newslist_view, parent, false);
                 holder.title= (TextView) convertView.findViewById(R.id.item_list_view2_title);
                 holder.pic1= (ImageView) convertView.findViewById(R.id.item_list_view2_pic1);
                 holder.author= (TextView) convertView.findViewById(R.id.item_list_view2_author);

@@ -17,10 +17,12 @@
         </intent-filter>
         </activity>
 
-        <activity android:name="shownews.ShowNewsActivity"/>
-        <activity android:name="showchengyu.ShowChengYu"/>
+        <activity android:name="activity.ShowNewsActivity"/>
+        <activity android:name="activity.ShowChengYuActivity"/>
         <activity android:name="activity.Error"/>
-        <activity android:name="search.SearchChengYu"/>
+        <activity android:name="activity.SearchChengYuActivity"/>
+        <activity android:name="activity.ShowListActivity"/>
+        <activity android:name="activity.GuideActivity"/>
     </application>
 
 
