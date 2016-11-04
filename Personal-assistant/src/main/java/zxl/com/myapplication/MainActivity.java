@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapter.MyFragmentPagerAdapter;
+import model.ChengYu_m;
 import model.Joke;
 import mysqlite.ChengYuDB;
 
@@ -31,16 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
         mChengYuDB=new ChengYuDB(MainActivity.this);
 
-        mChengYuDB.insert1("积少成多");
-        mChengYuDB.insert1("纲举目张");
-        mChengYuDB.insert1("自作主张");
-        mChengYuDB.insert1("急敛暴征");
-        mChengYuDB.insert1("鸿骞凤立");
-        mChengYuDB.insert1("贼人心虚");
-        mChengYuDB.insert1("全无心肝");
-        mChengYuDB.insert1("芙蓉出水");
-        mChengYuDB.insert1("高耸入云");
-        mChengYuDB.insert1("食案方丈");
+        mChengYuDB.insert1(new ChengYu_m("积少成多","JISHAOCHENGDUO"));
+        mChengYuDB.insert1(new ChengYu_m("纲举目张","GANGJUKUZHANG"));
+        mChengYuDB.insert1(new ChengYu_m("自作主张","ZIZUOZHEZHANG"));
+        mChengYuDB.insert1(new ChengYu_m("急敛暴征","JILIANBAOZHENG"));
+        mChengYuDB.insert1(new ChengYu_m("鸿骞凤立","HONGSAIFENGLI"));
+        mChengYuDB.insert1(new ChengYu_m("贼人心虚","ZIRENXINXU"));
+        mChengYuDB.insert1(new ChengYu_m("全无心肝","QUANWUXINGAN"));
+        mChengYuDB.insert1(new ChengYu_m("芙蓉出水","CHESHUIFURONG"));
+        mChengYuDB.insert1(new ChengYu_m("高耸入云","GAOSONGRUYUN"));
+        mChengYuDB.insert1(new ChengYu_m("食案方丈","SHIANFANGAN"));
         fragments=new ArrayList<Fragment>();
         fragments.add(new Fragment1());
         fragments.add(new Fragment2());

@@ -26,20 +26,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapter.MyRecycleViewAdapter;
+import model.ChengYu_m;
 import mysqlite.ChengYuDB;
+import search.SearchChengYu;
 import showchengyu.ShowChengYu;
 import util.DividerLinearItemDecoration;
 
 /**
  * Created by HongJay on 2016/8/11.
  */
-public class Fragment2 extends Fragment {
+public class Fragment2 extends Fragment implements View.OnClickListener {
 
     private EditText search;
     private TextView yixueguo;
     private TextView yishoucang;
     private RecyclerView recyclerView;
-    private List<String> list=new ArrayList<>();
+    private List<ChengYu_m> list=new ArrayList<>();
     private MyRecycleViewAdapter adapter;
     private ChengYuDB mChengYuDB;
     private Cursor mCursor;
@@ -58,9 +60,10 @@ public class Fragment2 extends Fragment {
         recyclerView= (RecyclerView) view.findViewById(R.id.fragment2_recyclerview);
         for(int i=0;i<mCursor.getCount();i++){
             mCursor.moveToPosition(i);
-            list.add(mCursor.getString(1).toString());
+            list.add(new ChengYu_m(mCursor.getString(1).toString(),mCursor.getString(2).toString()));
             Log.d("mCursor0",mCursor.getString(0).toString());
             Log.d("mCursor1",mCursor.getString(1).toString());
+            Log.d("mCursor2",mCursor.getString(2).toString());
         }
 
         adapter=new MyRecycleViewAdapter(getActivity(),list);
@@ -79,7 +82,7 @@ public class Fragment2 extends Fragment {
                 Toast.makeText(getActivity(), position + " click",
                         Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getActivity(), ShowChengYu.class);
-                intent.putExtra("name",list.get(position).toString());
+                intent.putExtra("name",list.get(position).getName());
                 startActivity(intent);
 
             }
@@ -92,7 +95,19 @@ public class Fragment2 extends Fragment {
                 adapter.removeData(position);
             }
         });
+
+
+        search.setOnClickListener(this);
         return view;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.fragment2_magnify:
+                Intent intent=new Intent(getActivity(), SearchChengYu.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }

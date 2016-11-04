@@ -71,15 +71,13 @@
             android:gravity="center"
             android:textSize="35sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="积少成多"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
         android:id="@+id/showchengyu_pingyin"
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="拼音：bēi shuǐ chē xīn"/>
+        android:layout_height="wrap_content" />
 
         <TextView
             android:layout_margin="5dp"
@@ -89,23 +87,12 @@
 
 
     <RadioGroup
+        android:padding="10dp"
+        android:orientation="horizontal"
         android:id="@+id/showchengyu_radio_tongyi"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="集腋成裘"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="聚沙成塔"/>
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="日积月累"/>
-
     </RadioGroup>
 
     <TextView
@@ -116,14 +103,12 @@
 
 
     <RadioGroup
+        android:padding="10dp"
+        android:orientation="horizontal"
         android:id="@+id/showchengyu_radio_fanyi"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="杯水车薪"/>
     </RadioGroup>
 
     </LinearLayout>
@@ -141,7 +126,7 @@
             android:layout_margin="5dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="500dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -152,8 +137,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="积累少量的东西，能成为巨大的数量。"/>
+                android:layout_height="wrap_content" />
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -166,9 +150,7 @@
                 <TextView
                     android:id="@+id/showchengyu_chuchu"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="《战国策·秦策四》：“积薄而为厚，聚少而为多。”《汉书·董仲舒传》：“聚少成多，积小致巨。"
-                    />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -183,9 +165,7 @@
                 <TextView
                     android:id="@+id/showchengyu_liju"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="佘念祖未到的时候，满心高兴，颇有跃跃欲试的意思，到过之后，大概情形看了一看，亦觉得～了。 清·吴趼人《糊涂世界》卷六"
-                    />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -200,9 +180,7 @@
                 <TextView
                     android:id="@+id/showchengyu_jieshi_yingwen"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="[lament one's littleness before the vast ocean -bemoan one's inadequacy in the face of a great task] 本义指在伟大的事物面前感叹自己的微小,今多比喻想做一件事而又无能为力,无可奈何"
-                    />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -217,45 +195,11 @@
                 <TextView
                     android:id="@+id/showchengyu_yinzheng"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="同“ 望洋而嘆 ”。 元 刘壎 《隐居通议·诗歌五》：“真能笼乾坤万里於一咏之内，千古吟人，望洋兴嘆。” 清 王韬 《瓮牖馀谈·用西船捕盗说》：“ 中国 捕盗诸艇不能缉治也，徒望洋兴嘆而已。” 鲁迅 《而已集·忧“天乳”》：“《顺天时报》载 北京 辟才胡同女附中主任 欧阳晓澜 女士不许剪发之女生报考，致此等人多有望洋兴叹之概云云。” 孙犁 《秀露集·耕堂读书记（一）》：“致使后来者得不到正确途径，望洋兴叹，视为畏途。”"
-                    />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_margin="5dp"
-            app:cardCornerRadius="10dp"
-            app:contentPadding="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="20dp"
-                android:background="@drawable/edittext_border"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="标记为已读"/>
-            <TextView
-                android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:background="@drawable/edittext_border"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="收藏一下"/>
-        </LinearLayout>
-        </android.support.v7.widget.CardView>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

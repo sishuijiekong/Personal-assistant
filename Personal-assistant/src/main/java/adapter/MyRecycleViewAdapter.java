@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import model.ChengYu_m;
 import zxl.com.myapplication.Fragment2;
 import zxl.com.myapplication.R;
 
@@ -21,10 +22,10 @@ import zxl.com.myapplication.R;
 public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdapter.ViewHolder> {
 
     private Context context;
-    private List<String> list;
+    private List<ChengYu_m> list;
     private OnItemClickLitener mOnItemClickLitener;
 
-    public MyRecycleViewAdapter(Context context, List<String> list){
+    public MyRecycleViewAdapter(Context context, List<ChengYu_m> list){
         this.context=context;
         this.list=list;
     }
@@ -77,7 +78,8 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
         }
 
             Log.d("mCursor2",list.get(position).toString());
-            holder.item_chengyu.setText(list.get(position).toString());
+            holder.item_chengyu.setText(list.get(position).getName());
+            holder.item_pingyin.setText(list.get(position).getPinyin());
 
 
     }
@@ -88,7 +90,7 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
     }
 
     public void addData(int position) {
-        list.add(position, "Insert One");
+
         notifyItemInserted(position);
     }
     public void removeData(int position) {

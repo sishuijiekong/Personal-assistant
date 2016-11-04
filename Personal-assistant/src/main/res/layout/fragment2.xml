@@ -5,6 +5,7 @@
      android:layout_height="match_parent"
      android:orientation="vertical">
     <EditText
+        android:singleLine="true"
         android:background="@drawable/edittext_border"
         android:id="@+id/fragment2_magnify"
         android:layout_margin="10dp"
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/magnify"
         android:hint="发现更多的成语"/>
+
 
     <LinearLayout
         android:layout_margin="10dp"
@@ -23,7 +25,7 @@
             android:id="@+id/fragment2_yixueguo"
             android:gravity="center"
             android:drawableTop="@drawable/a"
-            android:text="已学过"
+            android:text="学习足迹"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -31,7 +33,7 @@
             android:gravity="center"
             android:id="@+id/fragment2_yishoucang"
             android:drawableTop="@drawable/a"
-            android:text="已收藏"
+            android:text="收藏夹"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
