@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/11/2.
  */
-public class Joke {
+public class Joke implements Serializable {
 
     private String content;
     private String hashId;

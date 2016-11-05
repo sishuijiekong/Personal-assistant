@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by 张显林 on 2016/11/4.
  * 成语的简略信息
@@ -7,7 +9,7 @@ package model;
  * pinyin 成语拼音
  */
 
-public class ChengYu_m {
+public class ChengYu_m implements Serializable {
     private String name;
     private String pinyin;
 

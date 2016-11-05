@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/11/3.
  */
-public class ChengYu {
+public class ChengYu implements Serializable {
 
 
     //名字

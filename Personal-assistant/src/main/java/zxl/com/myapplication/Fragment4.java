@@ -1,5 +1,6 @@
 package zxl.com.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import activity.OrderBuShouSearchActivity;
+import activity.OrderPinYinSearchActivity;
 
 /**
  * Created by 张显林 on 2016/8/11.
@@ -67,10 +71,14 @@ public class Fragment4 extends Fragment  implements  View.OnClickListener{
                 Toast.makeText(getActivity(),"搜索",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fragment4_pin:
-                Toast.makeText(getActivity(),"拼音",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(), OrderPinYinSearchActivity.class);
+                intent.putExtra("title","拼音查字");
+                startActivity(intent);
                 break;
             case R.id.fragment4_bu:
-                Toast.makeText(getActivity(),"部首",Toast.LENGTH_SHORT).show();
+                Intent intent2=new Intent(getActivity(), OrderBuShouSearchActivity.class);
+                intent2.putExtra("title","部首查字");
+                startActivity(intent2);
                 break;
             case R.id.fragment4_quwei:
                 Toast.makeText(getActivity(),"趣味",Toast.LENGTH_SHORT).show();

@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,18 +13,19 @@ import android.widget.TextView;
 import java.util.List;
 
 import model.ChengYu_m;
+import util.DividerGridItemDecoration;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/20.
+ * Created by 张显林 on 2016/10/20.
  */
-public class MyRecycleViewAdapter_ShowList extends RecyclerView.Adapter<MyRecycleViewAdapter_ShowList.ViewHolder> {
+public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRecycleViewAdapter_HanZiResult.ViewHolder> {
 
     private Context context;
-    private List<String> list;
+    private List<ChengYu_m> list;
     private OnItemClickLitener mOnItemClickLitener;
 
-    public MyRecycleViewAdapter_ShowList(Context context, List<String> list){
+    public MyRecycleViewAdapter_HanZiResult(Context context, List<ChengYu_m> list){
         this.context=context;
         this.list=list;
     }
@@ -42,7 +44,7 @@ public class MyRecycleViewAdapter_ShowList extends RecyclerView.Adapter<MyRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View inflater=LayoutInflater.from(context).inflate(R.layout.item_showlist_view,parent,false);
+        View inflater=LayoutInflater.from(context).inflate(R.layout.item_hanziresult_list_view,parent,false);
         ViewHolder viewHolder=new ViewHolder(inflater);
 
         return viewHolder;
@@ -74,10 +76,14 @@ public class MyRecycleViewAdapter_ShowList extends RecyclerView.Adapter<MyRecycl
                 }
             });
         }
-
-            holder.item_count.setText(position+"");
-            holder.item_count.setTextColor(android.graphics.Color.parseColor("#1e8ae8"));
-            holder.item_name.setText(list.get(position).toString());
+//
+//            Log.d("mCursor2",list.get(position).toString());
+//            holder.item_chengyu.setText(list.get(position).getName());
+//            holder.item_pingyin.setText(list.get(position).getPinyin());
+        MyRecycleViewAdapter_HanZiResult_Item adapter=new MyRecycleViewAdapter_HanZiResult_Item(context,list);
+        holder.mRecyclerView.setAdapter(adapter);
+        holder.mRecyclerView.setLayoutManager(new GridLayoutManager(context,3));
+        holder.mRecyclerView.addItemDecoration(new DividerGridItemDecoration(context));
 
 
     }
@@ -98,13 +104,12 @@ public class MyRecycleViewAdapter_ShowList extends RecyclerView.Adapter<MyRecycl
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView item_count;
-        public TextView item_name;
+        public TextView item_title;
+        public RecyclerView mRecyclerView;
         public ViewHolder(View itemView) {
             super(itemView);
-            item_count= (TextView) itemView.findViewById(R.id.item_showlist_view_count);
-            item_name= (TextView) itemView.findViewById(R.id.item_showlist_view_name);
-
+            item_title= (TextView) itemView.findViewById(R.id.item_hanziresult_view_title);
+            mRecyclerView= (RecyclerView) itemView.findViewById(R.id.item_hanziresult_view_recyclerview);
         }
     }
 

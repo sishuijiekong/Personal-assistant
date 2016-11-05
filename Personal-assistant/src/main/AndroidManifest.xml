@@ -23,6 +23,9 @@
         <activity android:name="activity.SearchChengYuActivity"/>
         <activity android:name="activity.ShowListActivity"/>
         <activity android:name="activity.GuideActivity"/>
+        <activity android:name="activity.OrderBuShouSearchActivity"/>
+        <activity android:name="activity.OrderPinYinSearchActivity"/>
+        <activity android:name="activity.ShowHanZiResultList"/>
     </application>
 
 

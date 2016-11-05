@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by 28618 on 2016/11/2.
  */
-public class New {
+public class New implements Serializable {
     private  String title;
     private  String date;
     private  String author_name;
