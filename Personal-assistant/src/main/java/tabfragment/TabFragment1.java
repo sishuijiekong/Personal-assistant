@@ -83,10 +83,8 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
         date=((new Date().getTime()/100)-600)+"";
         Log.i("kkkkkkkkk",date);
         Request request = new Request.Builder()
-                .url("http://japi.juhe.cn/joke/content/list.from?sort=desc&page="+page+"&pagesize=10&time="+date+"&key=91c0a24f2befe8e95096afe420df99a0")
+                .url(" http://japi.juhe.cn/joke/content/text.from?key=91c0a24f2befe8e95096afe420df99a0&page="+page+"&pagesize=20")
                 .build();
-
-        Log.i("JOKE_URL","http://japi.juhe.cn/joke/content/list.from?sort=desc&page="+page+"&pagesize=10&time="+date+"&key=91c0a24f2befe8e95096afe420df99a0");
         client.newCall(request).enqueue(new Callback() {
 
             JSONObject jsonobject;

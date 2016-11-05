@@ -1,27 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@mipmap/ciyibackpic"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/fragment4_shoucang"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/fragment4_question"
+            android:background="@mipmap/staroutline"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/fragment4_question"
+            android:background="@mipmap/glasses"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="20dp"
+        android:gravity="center"
+        android:id="@+id/fragment4_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="218dp"
-        android:text="Page:"
-        android:textSize="20sp"
+        android:text="新华字典"
+        android:textSize="40sp"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/titile"
-        android:layout_width="wrap_content"
+    <EditText
+        android:focusable="false"
+        android:drawableLeft="@drawable/magnify"
+        android:layout_margin="30dp"
+        android:padding="10dp"
+        android:id="@+id/fragment4_search"
+        android:background="@drawable/edittext_border"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textSize="50sp"
-        android:text="4"/>
-</RelativeLayout>
+        android:hint="请输入单个汉字" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/fragment4_pin"
+            android:padding="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:padding="12dp"
+            android:background="@drawable/edittext_border"
+            android:textSize="35sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拼"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拼音查字"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment4_bu"
+            android:padding="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:padding="10dp"
+                android:background="@drawable/edittext_border"
+                android:textSize="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="部"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="部首查字"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment4_quwei"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="趣味汉字"/>
+
+
+
+</LinearLayout>

@@ -46,7 +46,6 @@ public class SearchChengYuActivity extends AppCompatActivity implements View.OnC
                     Intent intent=new Intent(SearchChengYuActivity.this, ShowChengYuActivity.class);
                     intent.putExtra("name",name.getText().toString());
                     startActivity(intent);
-                    finish();
                 }
 
         }

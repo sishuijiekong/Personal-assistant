@@ -109,6 +109,8 @@ public class ShowListActivity extends AppCompatActivity implements View.OnClickL
         TextView chakanxiangqing;
         //删除数据按钮
         TextView shanchushuju;
+        //放弃操作按钮
+        TextView fangqi;
         //获取弹窗布局
         View popupView = getLayoutInflater().inflate(R.layout.popupwindow, null);
         //获取顶层布局
@@ -117,9 +119,11 @@ public class ShowListActivity extends AppCompatActivity implements View.OnClickL
         mPopupWindow=new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mPopupWindow.setTouchable(true);
         mPopupWindow.setOutsideTouchable(false);
+        mPopupWindow.setFocusable(true);
         mPopupWindow.showAtLocation(topview, Gravity.CENTER,0,0);
         chakanxiangqing= (TextView) popupView.findViewById(R.id.popupwindow_xiangqing);
         shanchushuju= (TextView) popupView.findViewById(R.id.popupwindow_delete);
+        fangqi= (TextView) popupView.findViewById(R.id.popupwindow_cancel);
         chakanxiangqing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +146,12 @@ public class ShowListActivity extends AppCompatActivity implements View.OnClickL
                 adapter_showList.removeData(position);
                 mPopupWindow.dismiss();
                 Toast.makeText(ShowListActivity.this,"已经清除此数据",Toast.LENGTH_SHORT).show();
+            }
+        });
+        fangqi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPopupWindow.dismiss();
             }
         });
 

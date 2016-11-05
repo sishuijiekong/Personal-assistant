@@ -38,5 +38,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/popupwindow_delete"
             android:text="删除该记录"/>
+        <View
+            android:background="#1e8ae8"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+        <TextView
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/popupwindow_cancel"
+            android:text="放弃操作"/>
     </LinearLayout>
 </LinearLayout>
