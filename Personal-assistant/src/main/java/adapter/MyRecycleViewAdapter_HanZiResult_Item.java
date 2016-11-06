@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import model.ChengYu_m;
+import model.HanZi;
 import zxl.com.myapplication.R;
 
 /**
@@ -18,10 +19,11 @@ import zxl.com.myapplication.R;
 public class MyRecycleViewAdapter_HanZiResult_Item extends RecyclerView.Adapter<MyRecycleViewAdapter_HanZiResult_Item.ViewHolder> {
 
     private Context context;
-    private List<ChengYu_m> list;
+    private List<HanZi> list;
     private OnItemClickLitener mOnItemClickLitener;
 
-    public MyRecycleViewAdapter_HanZiResult_Item(Context context, List<ChengYu_m> list){
+
+    public MyRecycleViewAdapter_HanZiResult_Item(Context context, List<HanZi> list){
         this.context=context;
         this.list=list;
     }
@@ -72,10 +74,9 @@ public class MyRecycleViewAdapter_HanZiResult_Item extends RecyclerView.Adapter<
                 }
             });
         }
-//
-//            Log.d("mCursor2",list.get(position).toString());
-//            holder.item_chengyu.setText(list.get(position).getName());
-//            holder.item_pingyin.setText(list.get(position).getPinyin());
+
+           holder.item_title.setText(list.get(position).getPinyin());
+           holder.item_hanzi.setText(list.get(position).getZi());
 
 
 
@@ -98,9 +99,11 @@ public class MyRecycleViewAdapter_HanZiResult_Item extends RecyclerView.Adapter<
     class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView item_title;
-        public RecyclerView mRecyclerView;
+        public TextView item_hanzi;
         public ViewHolder(View itemView) {
             super(itemView);
+            item_title= (TextView) itemView.findViewById(R.id.item_item_hanziresult_view_title);
+            item_hanzi= (TextView) itemView.findViewById(R.id.item_item_hanziresult_view_hanzi);
         }
     }
 

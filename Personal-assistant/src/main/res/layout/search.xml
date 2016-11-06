@@ -31,7 +31,7 @@
         android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="成语就出来啦！"/>
+        android:text="知识就会赶来！"/>
     <EditText
         android:id="@+id/search_text"
         android:paddingLeft="40dp"
@@ -45,7 +45,7 @@
         android:layout_marginRight="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="请输入你要搜索的成语"/>
+        android:hint="请输入你要搜索的关键字"/>
 
     <Button
         android:id="@+id/search_ok"

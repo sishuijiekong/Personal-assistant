@@ -127,6 +127,7 @@ public class OrderPinYinSearchActivity extends AppCompatActivity {
                 mRecyclerView2_title.setText("以"+textview.getText().toString()+"开头的拼音");
                 //刷新adapter，通知界面刷新
                 adapter2.notifyDataSetChanged();
+
             }
 
             @Override
@@ -140,6 +141,14 @@ public class OrderPinYinSearchActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
 
                 TextView textview= (TextView) view.findViewById(R.id.item_pinyinbushou_view_name);
+
+                //将列表所有元素背景设为白色
+                for(int i=0;i<onekey_list.size();i++){
+                    mRecyclerView2.getChildAt(i).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(Color.WHITE);
+                }
+                //将选中元素背景设为橙色
+                mRecyclerView2.getChildAt(position).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(getResources().getColor(R.color.myoringe,null));
+
                 String str=textview.getText().toString();
                 Intent intent=new Intent(OrderPinYinSearchActivity.this,ShowHanZiResultList.class);
                 intent.putExtra("tag","pinyin");

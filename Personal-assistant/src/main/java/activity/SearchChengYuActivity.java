@@ -27,6 +27,7 @@ public class SearchChengYuActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.search);
         back= (ImageView) findViewById(R.id.search_back);
         name= (EditText) findViewById(R.id.search_text);
+        name.setHint("请输入你要查找的成语");
         ok= (Button) findViewById(R.id.search_ok);
 
         back.setOnClickListener(this);

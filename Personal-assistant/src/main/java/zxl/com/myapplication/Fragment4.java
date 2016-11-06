@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import activity.OrderBuShouSearchActivity;
 import activity.OrderPinYinSearchActivity;
+import activity.SearchHanZiActivity;
+import activity.ShowHanZiActivity;
+import activity.ShowHanZiResultList;
 
 /**
  * Created by 张显林 on 2016/8/11.
@@ -68,7 +71,9 @@ public class Fragment4 extends Fragment  implements  View.OnClickListener{
                 Toast.makeText(getActivity(),"解答",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fragment4_search:
-                Toast.makeText(getActivity(),"搜索",Toast.LENGTH_SHORT).show();
+
+                Intent intent4=new Intent(getActivity(), SearchHanZiActivity.class);
+                startActivity(intent4);
                 break;
             case R.id.fragment4_pin:
                 Intent intent=new Intent(getActivity(), OrderPinYinSearchActivity.class);

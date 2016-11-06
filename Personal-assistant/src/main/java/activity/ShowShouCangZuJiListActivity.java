@@ -27,7 +27,7 @@ import zxl.com.myapplication.R;
  * Created by 张显林 on 2016/11/4.
  * 足迹/收藏夹 列表显示页面
  */
-public class ShowListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShowShouCangZuJiListActivity extends AppCompatActivity implements View.OnClickListener {
 
     //列表类型（足迹/收藏夹）
     private TextView title;
@@ -128,7 +128,7 @@ public class ShowListActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View view) {
                 //转到相应的成语的详细信息
-                Intent intent5=new Intent(ShowListActivity.this,ShowChengYuActivity.class);
+                Intent intent5=new Intent(ShowShouCangZuJiListActivity.this,ShowChengYuActivity.class);
                 intent5.putExtra("name",list.get(position).toString());
                 startActivity(intent5);
                 mPopupWindow.dismiss();
@@ -145,7 +145,7 @@ public class ShowListActivity extends AppCompatActivity implements View.OnClickL
                 }
                 adapter_showList.removeData(position);
                 mPopupWindow.dismiss();
-                Toast.makeText(ShowListActivity.this,"已经清除此数据",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowShouCangZuJiListActivity.this,"已经清除此数据",Toast.LENGTH_SHORT).show();
             }
         });
         fangqi.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,7 @@
 package activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +31,8 @@ import adapter.MyRecycleViewAdapter_HanZiResult;
 import adapter.MyRecycleViewAdapter_PinYinBuShou;
 import model.BuShou;
 import model.ChengYu_m;
+import model.HanZi;
+import model.Joke;
 import model.PinYin;
 import util.DividerLinearItemDecoration;
 import zxl.com.myapplication.R;
@@ -50,10 +64,15 @@ public class ShowHanZiResultList extends AppCompatActivity{
     private RecyclerView mRecyclerView1;
     //查询结果列表
     private RecyclerView mRecyclerView2;
+    //拼音查字时网络请求返回汉字结果集
+    private List<HanZi> listhanzi=new ArrayList<HanZi>();
+    private  int totalpage=1;
 
     private MyRecycleViewAdapter_PinYinBuShou adapter1;
     private MyRecycleViewAdapter_HanZiResult adapter2;
 
+    //网络请求
+    private static OkHttpClient client=new OkHttpClient();
 
 
     @Override
@@ -80,7 +99,7 @@ public class ShowHanZiResultList extends AppCompatActivity{
         initView();
 
         //获取数据
-        initData();
+        initDataCount(key);
 
         //给控件加载数据
         loadData();
@@ -103,48 +122,130 @@ public class ShowHanZiResultList extends AppCompatActivity{
             Log.i("keylist",keylist.get(i).toString());
         }
         adapter1=new MyRecycleViewAdapter_PinYinBuShou(this,keylist);
+        adapter2=new MyRecycleViewAdapter_HanZiResult(this);
+
+
         mRecyclerView1.setAdapter(adapter1);
+        mRecyclerView2.setAdapter(adapter2);
+
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView1.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
-        adapter1.setOnItemClickLitener(new MyRecycleViewAdapter_PinYinBuShou.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                TextView textview= (TextView) view.findViewById(R.id.hanziresult_list_title);
-                pagetitle.setText(keylist.get(position));
-            }
 
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
-
-
-        List<ChengYu_m>  list2=new ArrayList<>();
-            for(int i=0;i<10;i++){
-                list2.add(new ChengYu_m());
-            }
-        adapter2=new MyRecycleViewAdapter_HanZiResult(this,list2);
-        mRecyclerView2.setAdapter(adapter2);
         mRecyclerView2.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView2.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
-        adapter1.setOnItemClickLitener(new MyRecycleViewAdapter_PinYinBuShou.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                TextView textview= (TextView) view.findViewById(R.id.hanziresult_list_title);
-                pagetitle.setText(keylist.get(position));
-            }
 
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
 
 
     }
 
-    private void initData() {
+    private int initDataCount(final String key) {
+        final int[] totalpage = {1};
+        Request request = new Request.Builder()
+                .url(" http://v.juhe.cn/xhzd/querypy?key=08f921c78a0454069f5938834efa7d4d&word="+key+"")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+
+            JSONObject jsonobject;
+            JSONObject jsonobject2;
+
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+                String s = response.body().string();
+                try {
+                    jsonobject=new JSONObject(s);
+                    if(jsonobject.getString("reason").equals("返回成功")){
+                        jsonobject2=new  JSONObject(jsonobject.getString("result"));
+                        totalpage[0] = Integer.parseInt(jsonobject2.getString("totalpage"));
+
+                }else{
+                        return;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                ShowHanZiResultList.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("totalpage[0]",totalpage[0]+"");
+                        for(int i=1;i<=totalpage[0];i++){
+                            initData(key,i);
+                        }
+
+                        adapter2.SetData(listhanzi);
+                        adapter2.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+
+        return totalpage[0];
+    }
+
+    private void initData(String key,int page) {
+
+        Request request = new Request.Builder()
+                .url(" http://v.juhe.cn/xhzd/querypy?word="+key+"&dtype=&page="+page+"&pageszie=50&isjijie=&isxiangjie=&key=08f921c78a0454069f5938834efa7d4d")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+
+            JSONObject jsonobject;
+            JSONObject jsonobject2;
+            JSONArray jsonArray;
+            List<HanZi> mlist=new ArrayList<HanZi>();
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+                String s = response.body().string();
+                try {
+                    jsonobject=new JSONObject(s);
+                    if(jsonobject.getString("reason").equals("返回成功")){
+
+                    jsonobject2=new  JSONObject(jsonobject.getString("result"));
+
+                    jsonArray=jsonobject2.getJSONArray("list");
+                    for(int i=0;i<jsonArray.length();i++) {
+
+                        HanZi hanzi=new HanZi();
+                        JSONObject json= (JSONObject) jsonArray.get(i);
+                        hanzi.setBushou(json.getString("bushou"));
+                        hanzi.setBihua(json.getString("bihua"));
+                        hanzi.setId(json.getString("id"));
+                        hanzi.setPinyin(json.getString("pinyin"));
+                        hanzi.setPy(json.getString("py"));
+                        hanzi.setWubi(json.getString("wubi"));
+                        hanzi.setZi(json.getString("zi"));
+                        mlist.add(hanzi);
+                       Log.i("汉字++++++++",hanzi.toString());
+                    }}else{
+                        return;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                ShowHanZiResultList.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                         adapter2.SetData(mlist);
+                          adapter2.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
 
     }
 

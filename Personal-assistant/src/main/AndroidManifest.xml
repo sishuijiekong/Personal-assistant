@@ -21,11 +21,13 @@
         <activity android:name="activity.ShowChengYuActivity"/>
         <activity android:name="activity.Error"/>
         <activity android:name="activity.SearchChengYuActivity"/>
-        <activity android:name="activity.ShowListActivity"/>
+        <activity android:name="activity.ShowShouCangZuJiListActivity"/>
         <activity android:name="activity.GuideActivity"/>
         <activity android:name="activity.OrderBuShouSearchActivity"/>
         <activity android:name="activity.OrderPinYinSearchActivity"/>
         <activity android:name="activity.ShowHanZiResultList"/>
+        <activity android:name="activity.ShowHanZiActivity"/>
+        <activity android:name="activity.SearchHanZiActivity"/>
     </application>
 
 

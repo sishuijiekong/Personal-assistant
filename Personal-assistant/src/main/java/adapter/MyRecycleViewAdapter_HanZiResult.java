@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.ChengYu_m;
+import model.HanZi;
 import util.DividerGridItemDecoration;
 import zxl.com.myapplication.R;
 
@@ -22,12 +24,17 @@ import zxl.com.myapplication.R;
 public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRecycleViewAdapter_HanZiResult.ViewHolder> {
 
     private Context context;
-    private List<ChengYu_m> list;
+    private List<HanZi> list;
     private OnItemClickLitener mOnItemClickLitener;
 
-    public MyRecycleViewAdapter_HanZiResult(Context context, List<ChengYu_m> list){
+    public MyRecycleViewAdapter_HanZiResult(Context context){
         this.context=context;
+
+    }
+
+    public void SetData(List<HanZi> list){
         this.list=list;
+        Log.e("list",list.size()+"");
     }
 
 
@@ -76,10 +83,8 @@ public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRec
                 }
             });
         }
-//
-//            Log.d("mCursor2",list.get(position).toString());
-//            holder.item_chengyu.setText(list.get(position).getName());
-//            holder.item_pingyin.setText(list.get(position).getPinyin());
+
+
         MyRecycleViewAdapter_HanZiResult_Item adapter=new MyRecycleViewAdapter_HanZiResult_Item(context,list);
         holder.mRecyclerView.setAdapter(adapter);
         holder.mRecyclerView.setLayoutManager(new GridLayoutManager(context,3));
@@ -90,7 +95,8 @@ public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRec
 
     @Override
     public int getItemCount() {
-        return list.size();
+
+        return 1;
     }
 
     public void addData(int position) {

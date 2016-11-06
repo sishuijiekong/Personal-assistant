@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import activity.ShowListActivity;
+import activity.ShowShouCangZuJiListActivity;
 import adapter.MyRecycleViewAdapter;
 import model.ChengYu_m;
 import mysqlite.ChengYuDB;
@@ -111,12 +111,12 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.fragment2_yishoucang://收藏夹按钮
-                Intent intent1=new Intent(getActivity(), ShowListActivity.class);
+                Intent intent1=new Intent(getActivity(), ShowShouCangZuJiListActivity.class);
                 intent1.putExtra("type","收藏夹");
                 startActivity(intent1);
                 break;
             case  R.id.fragment2_yixueguo://学习足迹按钮
-                Intent intent2=new Intent(getActivity(), ShowListActivity.class);
+                Intent intent2=new Intent(getActivity(), ShowShouCangZuJiListActivity.class);
                 intent2.putExtra("type","足迹");
                 startActivity(intent2);
                 break;
