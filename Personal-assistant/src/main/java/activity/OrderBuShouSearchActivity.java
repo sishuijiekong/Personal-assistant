@@ -136,12 +136,21 @@ public class OrderBuShouSearchActivity extends AppCompatActivity{
         adapter2.setOnItemClickLitener(new MyRecycleViewAdapter_PinYinBuShou.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
+
+                //将列表所有元素背景设为白色
+                for(int i=0;i<onekey_list.size();i++){
+                    mRecyclerView2.getChildAt(i).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(Color.WHITE);
+                }
+                //将选中元素背景设为橙色
+                mRecyclerView2.getChildAt(position).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(getResources().getColor(R.color.myoringe,null));
+
                 TextView textview= (TextView) view.findViewById(R.id.item_pinyinbushou_view_name);
                 String str=textview.getText().toString();
                 Intent intent=new Intent(OrderBuShouSearchActivity.this,ShowHanZiResultList.class);
                 intent.putExtra("tag","bushou");
                 intent.putExtra("key",str);
                 intent.putExtra("alllist", (Serializable) all_list);
+                intent.putExtra("position", position+"");
                 intent.putStringArrayListExtra("onekeylist", (ArrayList<String>) onekey_list);
                 startActivity(intent);
             }

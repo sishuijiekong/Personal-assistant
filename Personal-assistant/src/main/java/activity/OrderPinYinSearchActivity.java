@@ -154,6 +154,7 @@ public class OrderPinYinSearchActivity extends AppCompatActivity {
                 intent.putExtra("tag","pinyin");
                 intent.putExtra("key",str.substring(0,str.length()));
                 intent.putExtra("alllist", (Serializable) all_list);
+                intent.putExtra("position", position+"");
                 intent.putStringArrayListExtra("onekeylist", (ArrayList<String>) onekey_list);
                 startActivity(intent);
             }
@@ -229,7 +230,7 @@ public class OrderPinYinSearchActivity extends AppCompatActivity {
                                 onekey_list.add(all_list.get(i).getPinyin());
                             }
                         }
-                            mRecyclerView1.getChildAt(0).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(getResources().getColor(R.color.myoringe,null));
+                      //      mRecyclerView1.getChildAt(0).findViewById(R.id.item_pinyinbushou_view_name).setBackgroundColor(getResources().getColor(R.color.myoringe,null));
                             adapter2.notifyDataSetChanged();
                     }
                 });

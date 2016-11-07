@@ -1,11 +1,13 @@
 package activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import model.ChengYu_m;
-import mysqlite.ChengYuDB;
+import mysqlite.MYDB;
+import util.InitData;
 import zxl.com.myapplication.R;
 
 /**
@@ -14,7 +16,7 @@ import zxl.com.myapplication.R;
  */
 public class GuideActivity extends AppCompatActivity {
 
-    private ChengYuDB mChengYuDB;
+    private MYDB mMYDB;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,17 +26,26 @@ public class GuideActivity extends AppCompatActivity {
 
     private void initData() {
 
-        mChengYuDB=new ChengYuDB(GuideActivity.this);
+        mMYDB =new MYDB(GuideActivity.this);
 
-        mChengYuDB.insert1(new ChengYu_m("积少成多","JISHAOCHENGDUO"));
-        mChengYuDB.insert1(new ChengYu_m("纲举目张","GANGJUKUZHANG"));
-        mChengYuDB.insert1(new ChengYu_m("自作主张","ZIZUOZHEZHANG"));
-        mChengYuDB.insert1(new ChengYu_m("急敛暴征","JILIANBAOZHENG"));
-        mChengYuDB.insert1(new ChengYu_m("鸿骞凤立","HONGSAIFENGLI"));
-        mChengYuDB.insert1(new ChengYu_m("贼人心虚","ZIRENXINXU"));
-        mChengYuDB.insert1(new ChengYu_m("全无心肝","QUANWUXINGAN"));
-        mChengYuDB.insert1(new ChengYu_m("芙蓉出水","CHESHUIFURONG"));
-        mChengYuDB.insert1(new ChengYu_m("高耸入云","GAOSONGRUYUN"));
-        mChengYuDB.insert1(new ChengYu_m("食案方丈","SHIANFANGAN"));
+        mMYDB.insert1(new ChengYu_m("积少成多","JISHAOCHENGDUO"));
+        mMYDB.insert1(new ChengYu_m("纲举目张","GANGJUKUZHANG"));
+        mMYDB.insert1(new ChengYu_m("自作主张","ZIZUOZHEZHANG"));
+        mMYDB.insert1(new ChengYu_m("急敛暴征","JILIANBAOZHENG"));
+        mMYDB.insert1(new ChengYu_m("鸿骞凤立","HONGSAIFENGLI"));
+        mMYDB.insert1(new ChengYu_m("贼人心虚","ZIRENXINXU"));
+        mMYDB.insert1(new ChengYu_m("全无心肝","QUANWUXINGAN"));
+        mMYDB.insert1(new ChengYu_m("芙蓉出水","CHESHUIFURONG"));
+        mMYDB.insert1(new ChengYu_m("高耸入云","GAOSONGRUYUN"));
+        mMYDB.insert1(new ChengYu_m("食案方丈","SHIANFANGAN"));
+
+
+        InitData.SetDataDuoBiHua(this);
+        InitData.SetDataSanGe(this);
+
+        InitData.SetDataSiGe(this);
+        InitData.SetDataShangXia(this);
+        InitData.SetDataZuoYou(this);
+
     }
 }

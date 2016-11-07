@@ -27,7 +27,7 @@ import zxl.com.myapplication.R;
  * Created by 张显林 on 2016/11/4.
  * 足迹/收藏夹 列表显示页面
  */
-public class ShowShouCangZuJiListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShowShouCangHanZiListActivity extends AppCompatActivity implements View.OnClickListener {
 
     //列表类型（足迹/收藏夹）
     private TextView title;
@@ -56,11 +56,9 @@ public class ShowShouCangZuJiListActivity extends AppCompatActivity implements V
         getSupportActionBar().hide();
         setContentView(R.layout.showlist);
         //获取上一个Activity传输过来的列表类型的值
-        final Intent intent=getIntent();
-        type=intent.getStringExtra("type");
 
         title= (TextView) findViewById(R.id.showlist_type);
-        title.setText(type);
+        title.setText("汉字收藏夹");
 
         //获取足迹.收藏夹控件并设置点击事件监听
         back= (ImageView) findViewById(R.id.showlist_close);
@@ -89,11 +87,9 @@ public class ShowShouCangZuJiListActivity extends AppCompatActivity implements V
 
                 //长按列表项，删除数据项
 
-                if(type.equals("足迹")){
-                    mMYDB.delete2(list.get(position));
-                }else if(type.equals("收藏夹")){
-                    mMYDB.delete3(list.get(position));
-                }
+
+                mMYDB.hanzishoucangdelete1(list.get(position));
+
                 adapter_showList.removeData(position);
 
             }
@@ -128,7 +124,7 @@ public class ShowShouCangZuJiListActivity extends AppCompatActivity implements V
             @Override
             public void onClick(View view) {
                 //转到相应的成语的详细信息
-                Intent intent5=new Intent(ShowShouCangZuJiListActivity.this,ShowChengYuActivity.class);
+                Intent intent5=new Intent(ShowShouCangHanZiListActivity.this,ShowHanZiActivity.class);
                 intent5.putExtra("name",list.get(position).toString());
                 startActivity(intent5);
                 mPopupWindow.dismiss();
@@ -138,14 +134,11 @@ public class ShowShouCangZuJiListActivity extends AppCompatActivity implements V
             @Override
             public void onClick(View view) {
                 //删除相应的数据
-                if(type.equals("足迹")){
-                    mMYDB.delete2(list.get(position));
-                }else if(type.equals("收藏夹")){
-                    mMYDB.delete3(list.get(position));
-                }
+
+                mMYDB.hanzishoucangdelete1(list.get(position));
                 adapter_showList.removeData(position);
                 mPopupWindow.dismiss();
-                Toast.makeText(ShowShouCangZuJiListActivity.this,"已经清除此数据",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowShouCangHanZiListActivity.this,"已经清除此数据",Toast.LENGTH_SHORT).show();
             }
         });
         fangqi.setOnClickListener(new View.OnClickListener() {
@@ -163,11 +156,8 @@ public class ShowShouCangZuJiListActivity extends AppCompatActivity implements V
      * 从数据库中读取数据  初始化列表数据
      */
     private void initData() {
-        if(type.equals("足迹")){
-                mCursor= mMYDB.select2();
-        }else if(type.equals("收藏夹")){
-                 mCursor= mMYDB.select3();
-        }
+
+        mCursor= mMYDB.hanzishoucangselect();
         int count=mCursor.getCount();
         if(count<=0){
             list.add("没有任何记录");

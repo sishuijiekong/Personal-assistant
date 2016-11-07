@@ -20,7 +20,7 @@ import java.util.List;
 import activity.ShowShouCangZuJiListActivity;
 import adapter.MyRecycleViewAdapter;
 import model.ChengYu_m;
-import mysqlite.ChengYuDB;
+import mysqlite.MYDB;
 import activity.SearchChengYuActivity;
 import activity.ShowChengYuActivity;
 import util.DividerLinearItemDecoration;
@@ -44,7 +44,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
     //成语列表的Adapter
     private MyRecycleViewAdapter adapter;
     //数据库实例
-    private ChengYuDB mChengYuDB;
+    private MYDB mMYDB;
     //数据库数据返回结果游标
     private Cursor mCursor;
     @Nullable
@@ -53,8 +53,8 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment2, container, false);
 
-        mChengYuDB=new ChengYuDB(getContext());
-        mCursor=mChengYuDB.select1();
+        mMYDB =new MYDB(getContext());
+        mCursor= mMYDB.select1();
 
         search= (EditText) view.findViewById(R.id.fragment2_magnify);
         zuji= (TextView) view.findViewById(R.id.fragment2_yixueguo);

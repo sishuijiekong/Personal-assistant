@@ -67,7 +67,9 @@ public class ShowHanZiResultList extends AppCompatActivity{
     //拼音查字时网络请求返回汉字结果集
     private List<HanZi> listhanzi=new ArrayList<HanZi>();
     private  int totalpage=1;
+    private  int totalcount=0;
 
+    private  int mposition=0;
     private MyRecycleViewAdapter_PinYinBuShou adapter1;
     private MyRecycleViewAdapter_HanZiResult adapter2;
 
@@ -81,6 +83,9 @@ public class ShowHanZiResultList extends AppCompatActivity{
         getSupportActionBar().hide();
         setContentView(R.layout.hanziresult_list);
 
+        //加载控件
+        initView();
+
         intent=getIntent();
         tag=intent.getStringExtra("tag");
         key=intent.getStringExtra("key");
@@ -89,17 +94,16 @@ public class ShowHanZiResultList extends AppCompatActivity{
             pinYinList1= (List<PinYin>) intent.getSerializableExtra("alllist");
             keylist= (List<String>) intent.getSerializableExtra("onekeylist");
             Log.i("查询类型为：拼音查字  查询关键字：",key);
+            //获取数据
+            initData(key,1,"pinyin");
         }else{
             buSouList1= (List<BuShou>) intent.getSerializableExtra("alllist");
             keylist= (List<String>) intent.getSerializableExtra("onekeylist");
             Log.i("查询类型为：部首查字  查询关键字：",key);
+            //获取数据
+            initData(key,1,"bushou");
         }
 
-        //加载控件
-        initView();
-
-        //获取数据
-        initDataCount(key);
 
         //给控件加载数据
         loadData();
@@ -122,11 +126,8 @@ public class ShowHanZiResultList extends AppCompatActivity{
             Log.i("keylist",keylist.get(i).toString());
         }
         adapter1=new MyRecycleViewAdapter_PinYinBuShou(this,keylist);
-        adapter2=new MyRecycleViewAdapter_HanZiResult(this);
-
 
         mRecyclerView1.setAdapter(adapter1);
-        mRecyclerView2.setAdapter(adapter2);
 
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView1.addItemDecoration(new DividerLinearItemDecoration(this, DividerLinearItemDecoration.VERTICAL_LIST));
@@ -138,10 +139,19 @@ public class ShowHanZiResultList extends AppCompatActivity{
 
     }
 
-    private int initDataCount(final String key) {
+    private int initDataCount(final String key,final String type) {
         final int[] totalpage = {1};
+        String url=" http://v.juhe.cn/xhzd/querypy?key=08f921c78a0454069f5938834efa7d4d&word="+key+"";
+        if (type.equals("pinyin")){
+                 url=" http://v.juhe.cn/xhzd/querypy?key=08f921c78a0454069f5938834efa7d4d&word="+key+"";
+        }else if (type.equals("bushou")){
+
+               url=" http://v.juhe.cn/xhzd/querybs?key=08f921c78a0454069f5938834efa7d4d&word="+key.substring(0,key.length()-1)+"";
+
+        }
+        Log.i("urlllllllll",url);
         Request request = new Request.Builder()
-                .url(" http://v.juhe.cn/xhzd/querypy?key=08f921c78a0454069f5938834efa7d4d&word="+key+"")
+                .url(url)
                 .build();
         client.newCall(request).enqueue(new Callback() {
 
@@ -174,13 +184,9 @@ public class ShowHanZiResultList extends AppCompatActivity{
                 ShowHanZiResultList.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("totalpage[0]",totalpage[0]+"");
-                        for(int i=1;i<=totalpage[0];i++){
-                            initData(key,i);
+                        for (int i=0;i<=totalcount/50;i++){
+                            initData(key,i+1,type);
                         }
-
-                        adapter2.SetData(listhanzi);
-                        adapter2.notifyDataSetChanged();
                     }
                 });
             }
@@ -189,10 +195,17 @@ public class ShowHanZiResultList extends AppCompatActivity{
         return totalpage[0];
     }
 
-    private void initData(String key,int page) {
+    private void initData(String key,int page,String type) {
 
+        String url="";
+        if (type.equals("pinyin")){
+            url=" http://v.juhe.cn/xhzd/querypy?word="+key+"&dtype=&page="+page+"&pagesize=50&isjijie=&isxiangjie=&key=08f921c78a0454069f5938834efa7d4d";
+        }else if (type.equals("bushou")){
+            url=" http://v.juhe.cn/xhzd/querybs?word="+key.substring(0,key.length()-1)+"&dtype=&page="+page+"&pagesize=50&isjijie=&isxiangjie=&key=08f921c78a0454069f5938834efa7d4d";
+
+        }
         Request request = new Request.Builder()
-                .url(" http://v.juhe.cn/xhzd/querypy?word="+key+"&dtype=&page="+page+"&pageszie=50&isjijie=&isxiangjie=&key=08f921c78a0454069f5938834efa7d4d")
+                .url(url)
                 .build();
         client.newCall(request).enqueue(new Callback() {
 
@@ -229,7 +242,7 @@ public class ShowHanZiResultList extends AppCompatActivity{
                         hanzi.setPy(json.getString("py"));
                         hanzi.setWubi(json.getString("wubi"));
                         hanzi.setZi(json.getString("zi"));
-                        mlist.add(hanzi);
+                        listhanzi.add(hanzi);
                        Log.i("汉字++++++++",hanzi.toString());
                     }}else{
                         return;
@@ -240,8 +253,10 @@ public class ShowHanZiResultList extends AppCompatActivity{
                 ShowHanZiResultList.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                         adapter2.SetData(mlist);
-                          adapter2.notifyDataSetChanged();
+
+                        adapter2=new MyRecycleViewAdapter_HanZiResult(ShowHanZiResultList.this);
+                        adapter2.setList(listhanzi);
+                        mRecyclerView2.setAdapter(adapter2);
                     }
                 });
             }

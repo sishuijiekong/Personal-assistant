@@ -1,48 +1,37 @@
 package adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import activity.ShowHanZiActivity;
-import model.ChengYu_m;
 import model.HanZi;
-import util.DividerGridItemDecoration;
+import model.QuWeiHanZi;
 import zxl.com.myapplication.R;
 
 /**
  * Created by 张显林 on 2016/10/20.
  */
-public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRecycleViewAdapter_HanZiResult.ViewHolder> {
+public class MyRecycleViewAdapter_QuWeiHanZi extends RecyclerView.Adapter<MyRecycleViewAdapter_QuWeiHanZi.ViewHolder> {
 
     private Context context;
-    private List<HanZi> list;
-    private List<HanZi> list2;
+    private List<QuWeiHanZi> list;
     private OnItemClickLitener mOnItemClickLitener;
-    private int [] bihua=new int[50];
+    private  String type;
 
-    public MyRecycleViewAdapter_HanZiResult(Context context){
+
+    public MyRecycleViewAdapter_QuWeiHanZi(Context context, List<QuWeiHanZi> list,String type){
         this.context=context;
-
+        this.list=list;
+        this.type=type;
     }
-    public void setList(List<HanZi> list2){
 
-        this.list2=list2;
-    }
-    public List<HanZi>  getList(){
 
-        return list2;
-    }
+
     public interface OnItemClickLitener
     {
         void onItemClick(View view, int position);
@@ -55,7 +44,7 @@ public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRec
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View inflater=LayoutInflater.from(context).inflate(R.layout.item_hanziresult_list_view,parent,false);
+        View inflater=LayoutInflater.from(context).inflate(R.layout.item_item_hanziresult_list_view,parent,false);
         ViewHolder viewHolder=new ViewHolder(inflater);
 
         return viewHolder;
@@ -88,33 +77,21 @@ public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRec
             });
         }
 
+        if (type.equals("0")){
+            holder.item_title.setText(list.get(position).getBihua()+"画");
+        }else {
+            holder.item_title.setText(list.get(position).getPinyin());
+        }
 
-        holder.item_title.setText("拼音为 "+getList().get(0).getPy()+" 的汉字");
+           holder.item_hanzi.setText(list.get(position).getZi());
 
-        MyRecycleViewAdapter_HanZiResult_Item adapter=new MyRecycleViewAdapter_HanZiResult_Item(context,getList());
-        holder.mRecyclerView.setAdapter(adapter);
-        holder.mRecyclerView.setLayoutManager(new GridLayoutManager(context,3));
-        holder.mRecyclerView.addItemDecoration(new DividerGridItemDecoration(context));
-        adapter.setOnItemClickLitener(new MyRecycleViewAdapter_HanZiResult_Item.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent=new Intent(context, ShowHanZiActivity.class);
-                intent.putExtra("name",getList().get(position).getZi());
-                context.startActivity(intent);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
 
 
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return list.size();
     }
 
     public void addData(int position) {
@@ -129,11 +106,11 @@ public class MyRecycleViewAdapter_HanZiResult extends RecyclerView.Adapter<MyRec
     class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView item_title;
-        public RecyclerView mRecyclerView;
+        public TextView item_hanzi;
         public ViewHolder(View itemView) {
             super(itemView);
-            item_title= (TextView) itemView.findViewById(R.id.item_hanziresult_view_title);
-            mRecyclerView= (RecyclerView) itemView.findViewById(R.id.item_hanziresult_view_recyclerview);
+            item_title= (TextView) itemView.findViewById(R.id.item_item_hanziresult_view_title);
+            item_hanzi= (TextView) itemView.findViewById(R.id.item_item_hanziresult_view_hanzi);
         }
     }
 

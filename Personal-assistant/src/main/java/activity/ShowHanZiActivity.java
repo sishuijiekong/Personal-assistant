@@ -1,15 +1,12 @@
 package activity;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,18 +15,12 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
-import model.ChengYu;
-import model.ChengYu_m;
-import model.HanZi;
-import mysqlite.ChengYuDB;
-import util.ChengYuFormate;
+import mysqlite.MYDB;
 import zxl.com.myapplication.R;
 
 /**
@@ -68,7 +59,7 @@ public class ShowHanZiActivity extends AppCompatActivity implements View.OnClick
 
     private TextView message;
     //数据库实例
-    private ChengYuDB mChengYuDB=new ChengYuDB(this);
+    private MYDB mMYDB =new MYDB(this);
     //网络连接请求
     private static OkHttpClient client=new OkHttpClient();
 
@@ -207,7 +198,7 @@ public class ShowHanZiActivity extends AppCompatActivity implements View.OnClick
             case R.id.showhanzi_share://分享按钮
                 break;
             case R.id.showhanzi_shoucang://收藏按钮
-
+                mMYDB.hanzishoucanginsert(hanzi.getText().toString(),pinyin.getText().toString());
                 Toast.makeText(this,"已加入收藏夹",Toast.LENGTH_SHORT).show();
                 break;
 

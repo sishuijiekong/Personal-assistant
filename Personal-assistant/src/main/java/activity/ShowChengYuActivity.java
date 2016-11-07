@@ -27,7 +27,7 @@ import java.util.List;
 
 import model.ChengYu;
 import model.ChengYu_m;
-import mysqlite.ChengYuDB;
+import mysqlite.MYDB;
 import util.ChengYuFormate;
 import zxl.com.myapplication.R;
 
@@ -69,7 +69,7 @@ public class ShowChengYuActivity extends AppCompatActivity implements View.OnCli
     //没有数据时页面的反响按钮
     private ImageView error_share;
     //数据库实例
-    private ChengYuDB mChengYuDB=new ChengYuDB(this);
+    private MYDB mMYDB =new MYDB(this);
     //网络连接请求
     private static OkHttpClient client=new OkHttpClient();
 
@@ -169,7 +169,7 @@ public class ShowChengYuActivity extends AppCompatActivity implements View.OnCli
 
                         if(chengyudata!=null){
                              //往成语学习足迹表里插入一条数据
-                        mChengYuDB.insert2(new ChengYu_m(chengyudata.getName(),chengyudata.getPinyin()));
+                        mMYDB.insert2(new ChengYu_m(chengyudata.getName(),chengyudata.getPinyin()));
                              //往页面控件设置数据
                         chengyu.setText(chengyudata.getName());
                             //设置同义成语 （如果数据中没有同义成语，则显示提示语句）
@@ -306,7 +306,7 @@ public class ShowChengYuActivity extends AppCompatActivity implements View.OnCli
             case R.id.showchengyu_share://分享按钮
                 break;
             case R.id.showchengyu_shoucang://收藏按钮
-                mChengYuDB.insert3(new ChengYu_m(chengyu.getText().toString(),pinyin.getText().toString()));
+                mMYDB.insert3(new ChengYu_m(chengyu.getText().toString(),pinyin.getText().toString()));
                 Toast.makeText(this,"已加入收藏夹",Toast.LENGTH_SHORT).show();
                 break;
 

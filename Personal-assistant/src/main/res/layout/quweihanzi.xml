@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/root_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/ciyibackpic"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:background="#1e8ae8"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/quweihanzi_back"
+            android:background="@drawable/chevrondoubleleft"
+            android:layout_alignParentLeft="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:text="趣味汉字"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/quweihanzi_duobijua"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/text1"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:text="多"
+                android:textSize="35sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
+                android:text="笔画最多的汉字"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:background="@mipmap/dotsvertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1e8ae8"/>
+        <LinearLayout
+            android:id="@+id/quweihanzi_zuoyouxiangtong"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:text="林"
+                android:textSize="35sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
+                android:text="左右相同的汉字"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:background="@mipmap/dotsvertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1e8ae8"/>
+        <LinearLayout
+            android:id="@+id/quweihanzi_shangxiaxiangtong"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:text="炎"
+                android:textSize="35sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
+                android:text="上下相同的汉字"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:background="@mipmap/dotsvertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1e8ae8"/>
+        <LinearLayout
+            android:id="@+id/quweihanzi_sangexiangtong"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:text="众"
+                android:textSize="35sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
+                android:text="三个相同汉字组成的字"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:background="@mipmap/dotsvertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1e8ae8"/>
+        <LinearLayout
+            android:id="@+id/quweihanzi_sigexiangtong"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="5dp"
+                android:background="@drawable/edittext_border"
+                android:gravity="center"
+                android:text="㵘"
+                android:textSize="35sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
+                android:text="四个相同汉字组成的字"
+                android:layout_toRightOf="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:background="@mipmap/dotsvertical"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

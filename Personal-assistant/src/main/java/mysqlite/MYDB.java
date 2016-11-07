@@ -14,7 +14,7 @@ import model.ChengYu_m;
  * Created by 张显林 on 2016/11/3.
  * 数据库（sqlite）构建  数据操作
  */
-public class ChengYuDB extends SQLiteOpenHelper {
+public class MYDB extends SQLiteOpenHelper {
 
     private final static String DATABASE_NAME = "CHENGYU.db";
     private final static int DATABASE_VERSION = 1;
@@ -34,7 +34,36 @@ public class ChengYuDB extends SQLiteOpenHelper {
     private final static String READ_TIME ="read_time";
 
 
-    public ChengYuDB(Context context) {
+
+
+    //汉字收藏表
+    private final static String TABLE_NAME4 = "hanzishoucang_table";
+    //汉字ID
+    private final static String HANZI_ID = "hanziid";
+    //汉字文字
+    private final static String HANZI_ZI = "hanzizi";
+    //汉字拼音
+    private final static String HANZI_PINYIN = "hanzipinyin";
+
+
+
+    //趣味汉字表
+    private final static String TABLE_NAME5 = "quweihanzi_table";
+    //汉字ID
+    private final static String QHANZI_ID = "hanziid";
+    //汉字文字
+    private final static String QHANZI_ZI = "hanzizi";
+    //汉字拼音
+    private final static String QHANZI_PINYIN = "hanzipinyin";
+    //汉字笔画
+    private final static String QHANZI_BIHUA = "hanzibihua";
+    //趣味类型
+    private final static String QHANZI_TYPE = "hanzitype";
+
+
+
+
+    public MYDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
@@ -67,12 +96,37 @@ public class ChengYuDB extends SQLiteOpenHelper {
         String sql3 = "CREATE TABLE " + TABLE_NAME3 + " (" + CHENGYU_ID
                 + " INTEGER primary key autoincrement, " + CHENGYU_NAME + " text NOT NULL UNIQUE,"+READ_TIME+" text);";
 
+
+        /**
+         * HANZI_ID 整形  主键  自动增长
+         * HANZI_ZI String型 非空 唯一性约束
+         * HANZI_PINYIN String型
+         */
+
+        String sql4 = "CREATE TABLE " + TABLE_NAME4 + " (" + HANZI_ID
+                + " INTEGER primary key autoincrement, " + HANZI_ZI + " text NOT NULL UNIQUE,"+HANZI_PINYIN+" text);";
+
+
+        /**
+         * QHANZI_ID 整形  主键  自动增长
+         * QHANZI_ZI String型 非空 唯一性约束
+         * QHANZI_PINYIN String型
+         * QHANZI_BIHUA String型
+         * QHANZI_TYPE String型
+         */
+
+        String sql5 = "CREATE TABLE " + TABLE_NAME5 + " (" + QHANZI_ID
+                + " INTEGER primary key autoincrement, " + QHANZI_ZI + " text NOT NULL UNIQUE,"+QHANZI_PINYIN+" text,"+QHANZI_TYPE+" text ,"+QHANZI_BIHUA+" text);";
+
+
         /**
          * 执行SQL语句创建数据表
          */
         db.execSQL(sql1);
         db.execSQL(sql2);
         db.execSQL(sql3);
+        db.execSQL(sql4);
+        db.execSQL(sql5);
     }
 
     /**
@@ -88,9 +142,11 @@ public class ChengYuDB extends SQLiteOpenHelper {
         String sql1 = "DROP TABLE IF EXISTS " + TABLE_NAME1;
         String sql2 = "DROP TABLE IF EXISTS " + TABLE_NAME2;
         String sql3 = "DROP TABLE IF EXISTS " + TABLE_NAME3;
+        String sql4 = "DROP TABLE IF EXISTS " + TABLE_NAME4;
         db.execSQL(sql1);
         db.execSQL(sql2);
         db.execSQL(sql3);
+        db.execSQL(sql4);
         onCreate(db);
     }
 
@@ -200,5 +256,72 @@ public class ChengYuDB extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * 汉字收藏表
+     * @return
+     */
+
+    //查询所有汉字收藏
+    public Cursor hanzishoucangselect() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db
+                .query(TABLE_NAME4, null, null, null, null, null, null);
+        return cursor;
+    }
+    //增加一条汉字收藏操作
+    public long hanzishoucanginsert(String hanzi,String pinyin)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(HANZI_ZI, hanzi);
+        cv.put(HANZI_PINYIN, pinyin);
+        long row = db.insert(TABLE_NAME4, null, cv);
+        return row;
+    }
+    //根据成语名删除一条汉字收藏
+    public void hanzishoucangdelete1(String name)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = HANZI_ZI + " = ?";
+        String[] whereValue ={ name};
+        db.delete(TABLE_NAME4, where, whereValue);
+    }
+
+
+
+    /**
+     * 趣味汉字表
+     * @return
+     */
+
+    //查询所有汉字收藏
+    public Cursor quweihanziselect(String type) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String where = QHANZI_TYPE + " = ?";
+        String[] whereValue ={ type};
+        Cursor cursor = db
+                .query(TABLE_NAME5, null, where, whereValue, null, null, null);
+        return cursor;
+    }
+    //增加一条汉字收藏操作
+    public long quweihanziinsert(String hanzi,String pinyin,String bihua,String type)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(QHANZI_ZI, hanzi);
+        cv.put(QHANZI_PINYIN, pinyin);
+        cv.put(QHANZI_BIHUA, bihua);
+        cv.put(QHANZI_TYPE, type);
+        long row = db.insert(TABLE_NAME5, null, cv);
+        return row;
+    }
+    //根据成语名删除一条汉字收藏
+    public void quweihanzidelete1(String name)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = QHANZI_ZI + " = ?";
+        String[] whereValue ={ name};
+        db.delete(TABLE_NAME5, where, whereValue);
+    }
 
 }

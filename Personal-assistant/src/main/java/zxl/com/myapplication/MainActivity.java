@@ -14,9 +14,7 @@ import java.util.List;
 
 import activity.GuideActivity;
 import adapter.MyFragmentPagerAdapter;
-import model.ChengYu_m;
-import model.Joke;
-import mysqlite.ChengYuDB;
+import mysqlite.MYDB;
 
 /**
  *  by 张显林
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup rgGroup;
     private List<Fragment> fragments;
     private ViewPager mViewPager;
-    private ChengYuDB mChengYuDB;
+    private MYDB mMYDB;
     private Cursor mCursor;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         rgGroup = (RadioGroup) findViewById(R.id.rg_group);
-        rgGroup.check(R.id.rb_home);
+        rgGroup.check(R.id.rb_service);
         //当点击底部按钮时切换页面
         rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -86,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //防止频繁的销毁视图
         mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setCurrentItem(2);
     }
 
 }

@@ -28,6 +28,9 @@
         <activity android:name="activity.ShowHanZiResultList"/>
         <activity android:name="activity.ShowHanZiActivity"/>
         <activity android:name="activity.SearchHanZiActivity"/>
+        <activity android:name="activity.ShowShouCangHanZiListActivity"/>
+        <activity android:name="activity.ShowQuWeiHanZiActivity"/>
+        <activity android:name="activity.QuWeiHanZiActivity"/>
     </application>
 
 
