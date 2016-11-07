@@ -27,19 +27,7 @@ public class GuideActivity extends AppCompatActivity {
     private void initData() {
 
         mMYDB =new MYDB(GuideActivity.this);
-
-        mMYDB.insert1(new ChengYu_m("积少成多","JISHAOCHENGDUO"));
-        mMYDB.insert1(new ChengYu_m("纲举目张","GANGJUKUZHANG"));
-        mMYDB.insert1(new ChengYu_m("自作主张","ZIZUOZHEZHANG"));
-        mMYDB.insert1(new ChengYu_m("急敛暴征","JILIANBAOZHENG"));
-        mMYDB.insert1(new ChengYu_m("鸿骞凤立","HONGSAIFENGLI"));
-        mMYDB.insert1(new ChengYu_m("贼人心虚","ZIRENXINXU"));
-        mMYDB.insert1(new ChengYu_m("全无心肝","QUANWUXINGAN"));
-        mMYDB.insert1(new ChengYu_m("芙蓉出水","CHESHUIFURONG"));
-        mMYDB.insert1(new ChengYu_m("高耸入云","GAOSONGRUYUN"));
-        mMYDB.insert1(new ChengYu_m("食案方丈","SHIANFANGAN"));
-
-
+        InitData.SetDataChengYu(this);
         InitData.SetDataDuoBiHua(this);
         InitData.SetDataSanGe(this);
 
