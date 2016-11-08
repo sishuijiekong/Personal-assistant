@@ -77,9 +77,7 @@ public class Fragment4 extends Fragment  implements  View.OnClickListener{
                 Intent intent7=new Intent(getActivity(), ShowShouCangHanZiListActivity.class);
                 startActivity(intent7);
                 }else{
-                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
-                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent1);
+                    Toast.makeText(getActivity(),"您还没有登录，请登录后查看",Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.fragment4_question:

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViewPagerDemo</string>
+    <string name="app_name">随身小助手</string>
     <string name="xw_ptr_pull_to_refresh">下拉刷新</string>
     <string name="xw_ptr_release_to_refresh">释放立即刷新</string>
     <string name="xw_ptr_refreshing">正在刷新…</string>

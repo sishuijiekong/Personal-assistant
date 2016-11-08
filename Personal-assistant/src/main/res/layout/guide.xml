@@ -5,9 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="引导页"/>
+        android:layout_weight="9"
+        >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingLeft="100px"
+            android:paddingRight="100px"/>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/guide_count"
+        android:background="@android:color/transparent"
+        android:padding="15dp"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下一页"/>
+
 
 </LinearLayout>

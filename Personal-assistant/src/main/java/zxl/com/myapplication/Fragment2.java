@@ -122,9 +122,8 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
                     intent1.putExtra("type","收藏夹");
                     startActivity(intent1);
                 }else{
-                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
-                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent1);
+                    Toast.makeText(getActivity(),"您还没有登录，请登录后查看",Toast.LENGTH_SHORT).show();
+
                 }
 
                 break;
@@ -135,9 +134,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
                 intent2.putExtra("type","足迹");
                 startActivity(intent2);
                 }else{
-                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
-                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent1);
+                    Toast.makeText(getActivity(),"您还没有登录，请登录后查看",Toast.LENGTH_SHORT).show();
                 }
 
                 break;
