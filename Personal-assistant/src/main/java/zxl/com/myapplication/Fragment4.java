@@ -1,6 +1,8 @@
 package zxl.com.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import activity.LoginActivity;
 import activity.OrderBuShouSearchActivity;
 import activity.OrderPinYinSearchActivity;
 import activity.QuWeiHanZiActivity;
@@ -38,6 +41,8 @@ public class Fragment4 extends Fragment  implements  View.OnClickListener{
     private View bushousearch;
     //趣味汉字
     private TextView quweihanzi;
+
+    private SharedPreferences preferences;
 
     @Nullable
     @Override
@@ -67,8 +72,15 @@ public class Fragment4 extends Fragment  implements  View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.fragment4_shoucang:
+                preferences=getActivity().getSharedPreferences("APPLOG", Context.MODE_APPEND);
+                if(preferences.getBoolean("islogined",false)){
                 Intent intent7=new Intent(getActivity(), ShowShouCangHanZiListActivity.class);
                 startActivity(intent7);
+                }else{
+                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
+                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent1);
+                }
                 break;
             case R.id.fragment4_question:
                 Toast.makeText(getActivity(),"解答",Toast.LENGTH_SHORT).show();

@@ -77,7 +77,6 @@ public class InitData {
         mMYDB.quweihanziinsert("昌","chāng","8","2");
         mMYDB.quweihanziinsert("炎","yán","8","2");
         mMYDB.quweihanziinsert("二","èr","8","2");
-        mMYDB.quweihanziinsert("亖","sì","8","2");
         mMYDB.quweihanziinsert("仌","bīng","8","2");
         mMYDB.quweihanziinsert("圭","guī","8","2");
         mMYDB.quweihanziinsert("出","chū","8","2");

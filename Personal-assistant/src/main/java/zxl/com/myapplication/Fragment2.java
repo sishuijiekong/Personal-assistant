@@ -1,6 +1,8 @@
 package zxl.com.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import activity.LoginActivity;
 import activity.ShowShouCangZuJiListActivity;
 import adapter.MyRecycleViewAdapter;
 import model.ChengYu_m;
@@ -47,6 +50,8 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
     private MYDB mMYDB;
     //数据库数据返回结果游标
     private Cursor mCursor;
+
+    private SharedPreferences preferences;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -111,14 +116,30 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.fragment2_yishoucang://收藏夹按钮
-                Intent intent1=new Intent(getActivity(), ShowShouCangZuJiListActivity.class);
-                intent1.putExtra("type","收藏夹");
-                startActivity(intent1);
+                preferences=getActivity().getSharedPreferences("APPLOG", Context.MODE_APPEND);
+                if(preferences.getBoolean("islogined", false)){
+                    Intent intent1=new Intent(getActivity(), ShowShouCangZuJiListActivity.class);
+                    intent1.putExtra("type","收藏夹");
+                    startActivity(intent1);
+                }else{
+                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
+                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent1);
+                }
+
                 break;
             case  R.id.fragment2_yixueguo://学习足迹按钮
+                preferences=getActivity().getSharedPreferences("APPLOG", Context.MODE_APPEND);
+                if(preferences.getBoolean("islogined", false)){
                 Intent intent2=new Intent(getActivity(), ShowShouCangZuJiListActivity.class);
                 intent2.putExtra("type","足迹");
                 startActivity(intent2);
+                }else{
+                    Toast.makeText(getActivity(),"您还没有登录，请登录",Toast.LENGTH_SHORT).show();
+                    Intent intent1=new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent1);
+                }
+
                 break;
         }
     }

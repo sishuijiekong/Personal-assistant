@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activity.GuideActivity;
+import activity.LoginActivity;
 import adapter.MyFragmentPagerAdapter;
 import mysqlite.MYDB;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 读取 SharedPreferences
-        preferences = getSharedPreferences("MYAPP_LOG", MODE_PRIVATE);
+        preferences = getSharedPreferences("APPLOG", MODE_PRIVATE);
         //判断是不是首次运行，
         if(preferences.getBoolean("isfirstrun", true)){
 
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
         mViewPager = (ViewPager) findViewById(R.id.vp_main);
         fragments=new ArrayList<Fragment>();
         fragments.add(new Fragment1());
