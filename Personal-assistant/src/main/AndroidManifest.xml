@@ -18,7 +18,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -34,7 +34,7 @@
         <activity android:name="activity.Error"/>
         <activity android:name="activity.SearchChengYuActivity"/>
         <activity android:name="activity.ShowShouCangZuJiListActivity"/>
-        <activity android:name="activity.GuideActivity"/>
+        <activity android:name="activity.GuideActivity" android:theme="@style/GuideTheme"/>
         <activity android:name="activity.OrderBuShouSearchActivity"/>
         <activity android:name="activity.OrderPinYinSearchActivity"/>
         <activity android:name="activity.ShowHanZiResultList"/>
@@ -43,7 +43,7 @@
         <activity android:name="activity.ShowShouCangHanZiListActivity"/>
         <activity android:name="activity.ShowQuWeiHanZiActivity"/>
         <activity android:name="activity.QuWeiHanZiActivity"/>
-        <activity android:name="activity.LoginActivity"/>
+        <activity android:name="activity.LoginActivity" android:theme="@style/LoginTheme"/>
 
 
 

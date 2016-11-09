@@ -55,11 +55,34 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
         ArrayList<ImageView> imageViews= new ArrayList();
-        for(int i = 0;i<6;i++){
-            ImageView imageView = new ImageView(GuideActivity.this);
-            imageView.setImageResource(R.mipmap.guide1);
-            imageViews.add(imageView);
-        }
+//        for(int i = 0;i<6;i++){
+//            ImageView imageView = new ImageView(GuideActivity.this);
+//            imageView.setImageResource(R.mipmap.guide1);
+//            imageViews.add(imageView);
+//        }
+        ImageView imageView1 = new ImageView(GuideActivity.this);
+        imageView1.setImageResource(R.mipmap.guidehanzi1);
+        imageViews.add(imageView1);
+
+        ImageView imageView2 = new ImageView(GuideActivity.this);
+        imageView2.setImageResource(R.mipmap.guidehanzi2);
+        imageViews.add(imageView2);
+
+        ImageView imageView3 = new ImageView(GuideActivity.this);
+        imageView3.setImageResource(R.mipmap.guidechengyu1);
+        imageViews.add(imageView3);
+
+        ImageView imageView4 = new ImageView(GuideActivity.this);
+        imageView4.setImageResource(R.mipmap.guidechengyu2);
+        imageViews.add(imageView4);
+
+        ImageView imageView5 = new ImageView(GuideActivity.this);
+        imageView5.setImageResource(R.mipmap.guidexiaohua);
+        imageViews.add(imageView5);
+
+        ImageView imageView6 = new ImageView(GuideActivity.this);
+        imageView6.setImageResource(R.mipmap.guidexinwen);
+        imageViews.add(imageView6);
 
 
 

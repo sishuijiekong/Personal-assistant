@@ -7,6 +7,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v4.view.ViewPager
+
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/fragment3_guanggao"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+    </android.support.v4.view.ViewPager>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:textSize="25sp"
+        android:layout_marginTop="350dp"
+        android:text="欢迎使用，随身小助手"/>
+
     <LinearLayout
         android:padding="5dp"
         android:layout_alignParentBottom="true"

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.picasso.Picasso;
@@ -38,7 +39,7 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
     private TextView address;
     private TextView registertime;
     private TextView lasttime;
-    private TextView yejianmoshi;
+    private View yejianmoshi;
     private TextView shezhi;
     private TextView zhuxiao;
     private SharedPreferences mSharedPreferences;
@@ -60,7 +61,7 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
         address= (TextView) view.findViewById(R.id.login_address);
         registertime= (TextView) view.findViewById(R.id.login_time);
         lasttime= (TextView) view.findViewById(R.id.login_lasttime);
-        yejianmoshi= (TextView) view.findViewById(R.id.login_yejian);
+        yejianmoshi= view.findViewById(R.id.login_yejian);
         shezhi= (TextView) view.findViewById(R.id.login_seting);
         zhuxiao= (TextView) view.findViewById(R.id.login_loginout);
         view2.setOnClickListener(this);
@@ -109,10 +110,12 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
                 Intent intent=new Intent(getActivity(), LoginActivity.class);
                 startActivityForResult(intent,1);
                 break;
-            case R.id.login_jianjie:
+            case R.id.login_yejian:
+
+                Toast.makeText(getActivity(),"夜间模式,暂代开发",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.login_seting:
-
+                Toast.makeText(getActivity(),"App设置,暂代开发",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.login_loginout:
                 SharedPreferences.Editor editor = mSharedPreferences.edit();

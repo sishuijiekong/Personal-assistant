@@ -127,11 +127,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         }
                     });
-                    //authorize与showUser单独调用一个即可
                     weibo.authorize();//单独授权,OnComplete返回的hashmap是空的
                     weibo.showUser(null);//授权并获取用户信息
-                    //移除授权
-                    //weibo.removeAccount(true);
 
                     break;
                 default:

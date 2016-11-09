@@ -1,7 +1,9 @@
 package activity;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -74,6 +76,9 @@ public class ShowChengYuActivity extends AppCompatActivity implements View.OnCli
     private MYDB mMYDB =new MYDB(this);
     //网络连接请求
     private static OkHttpClient client=new OkHttpClient();
+
+    //本地文件读取
+    private SharedPreferences preferences;
 
 
     @Override
@@ -335,8 +340,13 @@ public class ShowChengYuActivity extends AppCompatActivity implements View.OnCli
 
                 break;
             case R.id.showchengyu_shoucang://收藏按钮
+                preferences=getSharedPreferences("APPLOG", Context.MODE_APPEND);
+                if(preferences.getBoolean("islogined",false)){
                 mMYDB.insert3(new ChengYu_m(chengyu.getText().toString(),pinyin.getText().toString()));
                 Toast.makeText(this,"已加入收藏夹",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this,"您还没有登录，请登录后再收藏",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
         }

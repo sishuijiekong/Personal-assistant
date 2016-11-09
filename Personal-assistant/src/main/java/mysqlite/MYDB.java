@@ -116,7 +116,7 @@ public class MYDB extends SQLiteOpenHelper {
          */
 
         String sql5 = "CREATE TABLE " + TABLE_NAME5 + " (" + QHANZI_ID
-                + " INTEGER primary key autoincrement, " + QHANZI_ZI + " text NOT NULL UNIQUE,"+QHANZI_PINYIN+" text,"+QHANZI_TYPE+" text ,"+QHANZI_BIHUA+" text);";
+                + " INTEGER primary key autoincrement, " + QHANZI_ZI + " text,"+QHANZI_PINYIN+" text,"+QHANZI_TYPE+" text ,"+QHANZI_BIHUA+" text);";
 
 
         /**
