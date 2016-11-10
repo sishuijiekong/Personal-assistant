@@ -87,7 +87,7 @@ public class ShowQuWeiHanZiActivity extends AppCompatActivity  implements View.O
         mRecyclerView= (RecyclerView) findViewById(R.id.showquweihanzi_recyclerview);
         adapter=new MyRecycleViewAdapter_QuWeiHanZi (this,list,type2);
         mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,5));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
         adapter.setOnItemClickLitener(new MyRecycleViewAdapter_QuWeiHanZi.OnItemClickLitener() {
             @Override

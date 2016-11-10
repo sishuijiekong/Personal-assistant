@@ -12,8 +12,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 
 import cn.sharesdk.framework.Platform;
@@ -21,6 +31,7 @@ import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import zxl.com.myapplication.Fragment5;
+import zxl.com.myapplication.MainActivity;
 import zxl.com.myapplication.R;
 
 /**
@@ -80,11 +91,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 case R.id.login_back://返回
                     finish();
                 case R.id.login_login://登陆
-
-
                     break;
                 case R.id.login_register://注册
-
+                    Intent intent=new Intent(LoginActivity.this,Register.class);
+                    startActivity(intent);
                     break;
                 case R.id.login_getpassword://忘记密码
 

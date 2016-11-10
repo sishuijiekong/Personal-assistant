@@ -87,8 +87,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(View view, int position)
             {
-                Toast.makeText(getActivity(), position + " click",
-                        Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getActivity(), ShowChengYuActivity.class);
                 intent.putExtra("name",list.get(position).getName());
                 startActivity(intent);

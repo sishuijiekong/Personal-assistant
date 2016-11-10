@@ -55,11 +55,7 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
         ArrayList<ImageView> imageViews= new ArrayList();
-//        for(int i = 0;i<6;i++){
-//            ImageView imageView = new ImageView(GuideActivity.this);
-//            imageView.setImageResource(R.mipmap.guide1);
-//            imageViews.add(imageView);
-//        }
+
         ImageView imageView1 = new ImageView(GuideActivity.this);
         imageView1.setImageResource(R.mipmap.guidehanzi1);
         imageViews.add(imageView1);
