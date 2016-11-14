@@ -24,6 +24,7 @@ import activity.LoginActivity;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
 
 /**
  * Created by 张显林 on 2016/8/11.
@@ -80,7 +81,7 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
         jianjie.setText(data.getStringExtra("jianjie"));
 
             Log.i("sex",data.getStringExtra("sex").toString());
-            if(data.getStringExtra("sex").toString().equals("m")){
+            if(data.getStringExtra("sex").toString().equals("m")||data.getStringExtra("sex").toString().equals("男")){
                 sex.setText("男");
             }else{
                 sex.setText("女");
@@ -122,9 +123,12 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
                 editor.putBoolean("islogined", false);
                 editor.commit();
                 ShareSDK.initSDK(getActivity());
+
+                Platform qq = ShareSDK.getPlatform(QQ.NAME);
+                qq.removeAccount(true);
                 Platform weibo = ShareSDK.getPlatform(SinaWeibo.NAME);
                 weibo.removeAccount(true);
-                getActivity().finish();
+                Toast.makeText(getActivity(),"已经清除您的登录信息！",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

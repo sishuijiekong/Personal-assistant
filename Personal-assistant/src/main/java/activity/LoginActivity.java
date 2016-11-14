@@ -30,6 +30,7 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
 import zxl.com.myapplication.Fragment5;
 import zxl.com.myapplication.MainActivity;
 import zxl.com.myapplication.R;
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor editor;
     private  Platform weibo;
+    private  Platform qq;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.login);
         ShareSDK.initSDK(this);
         weibo = ShareSDK.getPlatform(SinaWeibo.NAME);
+        qq = ShareSDK.getPlatform(QQ.NAME);
         initView();
         initEvent();
     }
@@ -100,7 +103,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     break;
                 case R.id.login_for_qq://用QQ登陆
-                    Toast.makeText(LoginActivity.this,"用QQ登陆",Toast.LENGTH_SHORT).show();
+                    //回调信息，可以在这里获取基本的授权返回的信息，但是注意如果做提示和UI操作要传到主线程handler里去执行
+                    qq.setPlatformActionListener(new PlatformActionListener() {
+
+                        @Override
+                        public void onError(Platform arg0, int arg1, Throwable arg2) {
+                            // TODO Auto-generated method stub
+                            arg2.printStackTrace();
+                        }
+
+                        @Override
+                        public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
+                            // TODO Auto-generated method stub
+                            //输出所有授权信息
+                            arg0.getDb().exportData();
+                            Log.d("tag++++++",arg2.toString());
+
+                            Intent aintent = new Intent(LoginActivity.this, Fragment5.class);
+                            aintent.putExtra("code","success");
+                            aintent.putExtra("name",arg2.get("nickname").toString());
+                            aintent.putExtra("jianjie","您还没有个人简介哦");
+                            aintent.putExtra("sex",arg2.get("gender").toString());
+                            aintent.putExtra("address",arg2.get("city").toString());
+                            aintent.putExtra("touxiang",arg2.get("figureurl_qq_1").toString());
+                            setResult(1, aintent); //intent为A传来的带有Bundle的intent，当然也可以自己定义新的Bundle
+                            finish();//此处一定要调用finish()方法
+                        }
+
+                        @Override
+                        public void onCancel(Platform arg0, int arg1) {
+                            // TODO Auto-generated method stub
+
+                        }
+                    });
+                    qq.authorize();//单独授权,OnComplete返回的hashmap是空的
+                    qq.showUser(null);//授权并获取用户信息
                     break;
                 case R.id.login_for_weixin://用微博登陆
 
@@ -119,7 +156,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             //输出所有授权信息
                             arg0.getDb().exportData();
                             Log.d("tag++++++",arg2.toString());
-                            //   if(arg2.get())
                             Intent aintent = new Intent(LoginActivity.this, Fragment5.class);
                             aintent.putExtra("code","success");
                             aintent.putExtra("name",arg2.get("screen_name").toString());

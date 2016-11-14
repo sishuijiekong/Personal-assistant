@@ -19,11 +19,11 @@ public class MYDB extends SQLiteOpenHelper {
     private final static String DATABASE_NAME = "CHENGYU.db";
     private final static int DATABASE_VERSION = 1;
     //所有成语表
-    private final static String TABLE_NAME1 = "all_table";
+    private final static String TABLE_NAME1 = "allchengyu_table";
     //成语学习足迹表
-    private final static String TABLE_NAME2 = "zuji_table";
+    private final static String TABLE_NAME2 = "zujichengyu_table";
     //成语收藏表
-    private final static String TABLE_NAME3 = "shoucang_table";
+    private final static String TABLE_NAME3 = "shoucangchengyu_table";
     //成语ID
     private final static String CHENGYU_ID = "chengyu_id";
     //成语名字

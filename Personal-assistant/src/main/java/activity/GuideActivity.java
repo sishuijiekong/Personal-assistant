@@ -171,13 +171,20 @@ public class GuideActivity extends AppCompatActivity {
     private void initData() {
 
         mMYDB =new MYDB(GuideActivity.this);
-        InitData.SetDataChengYu(this);
-        InitData.SetDataDuoBiHua(this);
-        InitData.SetDataSanGe(this);
 
-        InitData.SetDataSiGe(this);
-        InitData.SetDataShangXia(this);
-        InitData.SetDataZuoYou(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                InitData.SetDataChengYu(GuideActivity.this);
+                InitData.SetDataDuoBiHua(GuideActivity.this);
+                InitData.SetDataSanGe(GuideActivity.this);
+
+                InitData.SetDataSiGe(GuideActivity.this);
+                InitData.SetDataShangXia(GuideActivity.this);
+                InitData.SetDataZuoYou(GuideActivity.this);
+            }
+        }).start();
+
 
     }
 }
