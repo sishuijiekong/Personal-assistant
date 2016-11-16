@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.util.SimpleArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +19,18 @@ import android.widget.Toast;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.picasso.Picasso;
 
+import org.junit.internal.runners.statements.ExpectException;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import activity.LoginActivity;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
+import util.MyDateFormate;
 
 /**
  * Created by 张显林 on 2016/8/11.
@@ -89,8 +95,8 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
 
         address.setText(data.getStringExtra("address"));
 
-            registertime.setText(mSharedPreferences.getString("firsttime","2016-10-13"));
-            lasttime.setText("上次登录时间："+mSharedPreferences.getString("lastlogintime","2016-11-13").toString());
+            registertime.setText(MyDateFormate.formatetime(mSharedPreferences.getString("firsttime","Mon Nov 14 02:44:11 GMT+00:00 2016").toString()));
+            lasttime.setText("上次登录时间："+ MyDateFormate.formatetime(mSharedPreferences.getString("lastlogintime","Mon Nov 14 02:44:11 GMT+00:00 2016").toString()));
             Picasso.with(getActivity()).load(data.getStringExtra("touxiang")).into(touxiang);
 
 

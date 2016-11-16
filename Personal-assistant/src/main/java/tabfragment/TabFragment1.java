@@ -113,7 +113,7 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
                         joke.setUpdatetime(json.getString("updatetime"));
                         Log.i("joke",json.getString("updatetime"));
                         if(!jokeList.contains(joke))
-                               jokeList.add(0,joke);
+                               jokeList.add(joke);
 
                     }
                 } catch (JSONException e) {

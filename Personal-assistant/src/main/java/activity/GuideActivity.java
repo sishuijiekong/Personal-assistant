@@ -1,7 +1,9 @@
 package activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.ChengYu_m;
 import mysqlite.MYDB;
@@ -34,6 +37,7 @@ public class GuideActivity extends AppCompatActivity {
     private ViewPager mPager;
     private MyAdViewPagerAdapter mPagerAdapter;
     private TextView count;
+    private SharedPreferences preferencesm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class GuideActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.guide);
+        preferencesm=getSharedPreferences("APPLOG", Context.MODE_PRIVATE);
         mPager = (ViewPager) findViewById(R.id.pager);
         count= (TextView) findViewById(R.id.guide_count);
         count.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +53,9 @@ public class GuideActivity extends AppCompatActivity {
             public void onClick(View view) {
                 TextView count= (TextView) view.findViewById(R.id.guide_count);
                 if(count.getText().equals("开始使用")){
+                    SharedPreferences.Editor editor = preferencesm.edit();
+                    editor.putString("firsttime", new Date().toString());
+                    editor.commit();
                     Intent intent=new Intent(GuideActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

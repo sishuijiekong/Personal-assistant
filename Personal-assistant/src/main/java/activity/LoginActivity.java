@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             aintent.putExtra("jianjie","您还没有个人简介哦");
                             aintent.putExtra("sex",arg2.get("gender").toString());
                             aintent.putExtra("address",arg2.get("city").toString());
-                            aintent.putExtra("touxiang",arg2.get("figureurl_qq_1").toString());
+                            aintent.putExtra("touxiang",arg2.get("figureurl_qq_2").toString());
                             setResult(1, aintent); //intent为A传来的带有Bundle的intent，当然也可以自己定义新的Bundle
                             finish();//此处一定要调用finish()方法
                         }
