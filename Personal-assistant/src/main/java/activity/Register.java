@@ -16,7 +16,8 @@ import com.squareup.okhttp.OkHttpClient;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/29.
+ * Created by 张显林 on 2016/10/29.
+ * 注册页面
  */
 public class Register extends AppCompatActivity implements View.OnClickListener{
 

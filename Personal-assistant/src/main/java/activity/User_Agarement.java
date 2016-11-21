@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/29.
+ * Created by 张显林 on 2016/10/29.
  */
 public class User_Agarement extends AppCompatActivity implements View.OnClickListener {
 

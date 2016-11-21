@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/11/4.
+ * Created by 张显林 on 2016/11/4.
+ * 分离成语同义词和反义词字符串，
+ * 返回一个成语列表
  */
 public class ChengYuFormate {
 

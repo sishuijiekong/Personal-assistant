@@ -17,7 +17,7 @@ import zxl.com.myapplication.R;
 
 /**
  * ListAdapter
- * Created by XiaoWei on 2015-11-14.
+ * Created by张显林.
  */
 public class ListAdapter extends BaseListAdapter<Joke> implements View.OnClickListener {
 

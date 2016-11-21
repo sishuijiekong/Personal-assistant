@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/10/11.
  */
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
     private String[] mTitles = new String[]{"Tab 1", "Tab 2", "Tab 3","Tab 4","Tab 5"};

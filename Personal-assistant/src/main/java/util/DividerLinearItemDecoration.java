@@ -10,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+
 /**
- * Created by 28618 on 2016/10/20.
+ * Created by 张显林 on 2016/10/20.
+ * recyclerview的线性垂直布局时的分割线
  */
 public class DividerLinearItemDecoration extends RecyclerView.ItemDecoration {
 

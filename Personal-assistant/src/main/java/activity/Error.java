@@ -10,7 +10,8 @@ import android.widget.Toast;
 import zxl.com.myapplication.R;
 
 /**
- * Created by Administrator on 2016/11/4.
+ * Created by 张显林 on 2016/11/4.
+ * 错误页面
  */
 public class Error extends AppCompatActivity implements View.OnClickListener{
 

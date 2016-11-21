@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2016/10/27.
+ * Created by 张显林 on 2016/10/27.
  */
 public class FindViewPageAdapter extends PagerAdapter{
 

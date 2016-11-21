@@ -12,7 +12,7 @@ import java.util.List;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/20.
+ * Created by 张显林 on 2016/10/20.
  */
 public class MyRecycleViewAdapter_PinYinBuShou extends RecyclerView.Adapter<MyRecycleViewAdapter_PinYinBuShou.ViewHolder> {
 

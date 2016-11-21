@@ -36,7 +36,8 @@ import zxl.com.myapplication.MainActivity;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/24.
+ * Created by 张显林 on 2016/10/24.
+ * 登录页面
  */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 

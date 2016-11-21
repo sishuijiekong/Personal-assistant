@@ -3,7 +3,8 @@ package model;
 import java.io.Serializable;
 
 /**
- * Created by 28618 on 2016/11/2.
+ * Created by 张显林 on 2016/11/2.
+ * 新闻实例类
  */
 public class New implements Serializable {
     private  String title;

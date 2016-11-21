@@ -11,7 +11,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
- * Created by 28618 on 2016/10/20.
+ * Created by 张显林 on 2016/10/20.
+ * recyclerview的网格布局时的分割线
  */
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration{
     private static final int[] ATTRS = new int[] { android.R.attr.listDivider };

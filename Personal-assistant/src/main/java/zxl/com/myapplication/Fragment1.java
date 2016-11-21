@@ -20,7 +20,8 @@ import tabfragment.TabFragment1;
 import tabfragment.TabFragment2;
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/10/11.
+ * 新闻笑话页面
  */
 public class Fragment1 extends Fragment {
 

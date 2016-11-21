@@ -13,7 +13,8 @@ import android.widget.Toast;
 import zxl.com.myapplication.R;
 
 /**
- * Created by Administrator on 2016/11/4.
+ * Created by 张显林 on 2016/11/4.
+ * 成语搜索页面
  */
 public class SearchChengYuActivity extends AppCompatActivity implements View.OnClickListener{
 

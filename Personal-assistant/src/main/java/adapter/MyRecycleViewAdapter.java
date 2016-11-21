@@ -17,7 +17,7 @@ import zxl.com.myapplication.Fragment2;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/10/20.
+ * Created by 张显林 on 2016/10/20.
  */
 public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdapter.ViewHolder> {
 

@@ -3,7 +3,8 @@ package model;
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2016/11/3.
+ * Created by 张显林 on 2016/11/3.
+ * 成语实例类
  */
 public class ChengYu implements Serializable {
 

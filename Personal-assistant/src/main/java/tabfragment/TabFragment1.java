@@ -72,6 +72,10 @@ public class TabFragment1 extends Fragment implements PullToRefreshLayout.OnRefr
         return view;
     }
 
+    /**
+     * 获取笑话列表
+     * @param tag
+     */
     private void initData(int tag) {
 
         if(tag==0)

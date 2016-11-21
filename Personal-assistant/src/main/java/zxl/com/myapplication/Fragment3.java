@@ -20,7 +20,8 @@ import java.util.Date;
 import adapter.FindViewPageAdapter;
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/10/11.
+ * 欢迎主页面
  */
 public class Fragment3 extends Fragment {
 

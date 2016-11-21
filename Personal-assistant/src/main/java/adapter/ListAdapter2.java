@@ -20,7 +20,7 @@ import zxl.com.myapplication.R;
 
 /**
  * ListAdapter
- * Created by XiaoWei on 2015-11-14.
+ * Created by 张显林.
  */
 public class ListAdapter2 extends BaseListAdapter<New> {
 

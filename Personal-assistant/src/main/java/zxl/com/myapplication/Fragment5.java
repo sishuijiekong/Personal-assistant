@@ -93,6 +93,12 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
         return view;
     }
 
+    /**
+     * 接受intent返回的数据并显示在界面上
+     * @param requestCode 请求码
+     * @param resultCode  返回码
+     * @param data  返回数据
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -126,12 +132,12 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.login_gologin:
+            case R.id.login_gologin://登录事件
 
                 Intent intent=new Intent(getActivity(), LoginActivity.class);
                 startActivityForResult(intent,1);
                 break;
-            case R.id.login_yejian:
+            case R.id.login_yejian://夜间模式
                 isnight=!isnight;
                 BrightnessUtils.setScrennManualMode(getActivity());
                 ContentResolver contentResolver = getActivity().getContentResolver();
@@ -158,7 +164,7 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
                     Toast.makeText(getActivity(),"日间模式,已经开启",Toast.LENGTH_SHORT).show();
                      }
                 break;
-            case R.id.login_seting:
+            case R.id.login_seting://关于事件
                 View popupView = getActivity().getLayoutInflater().inflate(R.layout.aboutme, null);
 
                 mPopupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
@@ -182,7 +188,7 @@ public class Fragment5 extends Fragment implements View.OnClickListener{
                 });
                mPopupWindow.showAtLocation(view,Gravity.CENTER,0,0);
                 break;
-            case R.id.login_loginout:
+            case R.id.login_loginout://退出登录
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());  //先得到构造器
                 builder.setTitle("提示"); //设置标题

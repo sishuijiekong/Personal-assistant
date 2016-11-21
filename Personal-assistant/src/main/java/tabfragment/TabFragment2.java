@@ -35,7 +35,7 @@ import activity.ShowNewsActivity;
 import zxl.com.myapplication.R;
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林 on 2016/10/11.
  */
 public class TabFragment2 extends Fragment implements PullToRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener{
 
@@ -85,6 +85,10 @@ public class TabFragment2 extends Fragment implements PullToRefreshLayout.OnRefr
         return view;
     }
 
+    /**
+     * 获取新闻列表
+     * @param type
+     */
     private void initData(String type) {
 
         Request request = new Request.Builder()

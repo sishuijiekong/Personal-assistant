@@ -5,7 +5,8 @@ import android.os.Parcelable;
 import java.io.Serializable;
 
 /**
- * Created by 28618 on 2016/11/5.
+ * Created by 张显林 on 2016/11/5.
+ * 汉字部首实例类
  */
 public class BuShou implements Serializable {
 

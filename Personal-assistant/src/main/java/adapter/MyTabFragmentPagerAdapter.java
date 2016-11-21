@@ -7,10 +7,9 @@ import java.util.List;
 
 
 /**
- * Created by HongJay on 2016/8/11.
+ * Created by 张显林.
  */
 public class MyTabFragmentPagerAdapter extends FragmentPagerAdapter {
-//    private String[] mTitles = new String[]{"推荐", "圆桌", "热门","收藏"};
 private String[] mTitles = new String[]{"最新笑话", "今日头条"};
     private List<Fragment> fragments;
 

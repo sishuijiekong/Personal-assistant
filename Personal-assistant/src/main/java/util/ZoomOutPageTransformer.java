@@ -4,7 +4,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * Created by jason on 15/10/21.
+ * Created by 张显林 on 16/10/11.
+ * 欢迎引导页的viewpager滑动时的计算工具类
  */
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.85f;

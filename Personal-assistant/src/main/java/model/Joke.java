@@ -3,7 +3,8 @@ package model;
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2016/11/2.
+ * Created by 张显林 on 2016/11/2.
+ * 笑话实例类
  */
 public class Joke implements Serializable {
 

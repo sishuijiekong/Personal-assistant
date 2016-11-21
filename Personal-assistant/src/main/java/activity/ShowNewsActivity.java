@@ -17,7 +17,7 @@ import java.util.Random;
 import zxl.com.myapplication.R;
 
 /**
- * Created by 28618 on 2016/11/2.
+ * Created by 张显林 on 2016/11/2.
  */
 public class ShowNewsActivity extends AppCompatActivity implements View.OnClickListener{
 

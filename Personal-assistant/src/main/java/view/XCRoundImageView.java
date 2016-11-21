@@ -38,7 +38,7 @@ public class XCRoundImageView extends ImageView{
 
     /**
      * 绘制圆形图片
-     * @author caizhiming
+     * @author 张显林
      */
     @Override
     protected void onDraw(Canvas canvas) {
@@ -62,7 +62,7 @@ public class XCRoundImageView extends ImageView{
      * @param bitmap
      * @param pixels
      * @return Bitmap
-     * @author caizhiming
+     * @author 张显林
      */
     private Bitmap getCircleBitmap(Bitmap bitmap, int pixels) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),

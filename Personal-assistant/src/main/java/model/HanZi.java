@@ -1,7 +1,8 @@
 package model;
 
 /**
- * Created by 28618 on 2016/11/6.
+ * Created by 张显林 on 2016/11/6.
+ * 汉字实例类
  */
 public class HanZi {
 

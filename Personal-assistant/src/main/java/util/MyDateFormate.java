@@ -1,7 +1,8 @@
 package util;
 
 /**
- * Created by Administrator on 2016/11/16.
+ * Created by 张显林 on 2016/11/16.
+ * 处理时间格式化工具类   Thu, 21 Aug 2014 19:15:12 +0800 (CST)------------>>>>> 2014-08-21 19：15：12
  */
 public class MyDateFormate  {
 
