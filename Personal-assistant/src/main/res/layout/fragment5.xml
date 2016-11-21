@@ -102,6 +102,7 @@
                android:layout_height="wrap_content"
                android:text="注册时间"/>
            <TextView
+               android:gravity="center"
                android:id="@+id/login_time"
                android:layout_marginTop="5dp"
                android:layout_width="wrap_content"
@@ -204,7 +205,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设置"/>
+                android:text="关于"/>
 
 
 
