@@ -17,7 +17,7 @@
 
 app欢迎主界面
 ----------
-<div width="42" height="42">![image](https://github.com/sishuijiekong/Personal-assistant/blob/master/welcome.png)</div>
+![image](https://github.com/sishuijiekong/Personal-assistant/blob/master/welcome.png)
 新华字典功能
 ----------
 ![image](https://github.com/sishuijiekong/Personal-assistant/blob/master/zidian.png)
